@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Purchasing;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -16,6 +17,7 @@ public class CameraController : MonoBehaviour
 
     private Vector3 prevPointerPos;
     private Vector3 screenCenterPos;
+    PauseMenu p;
     void Start()
     {
         height = Screen.height;
@@ -27,6 +29,8 @@ public class CameraController : MonoBehaviour
 
         prevPointerPos = Vector3.zero;
         screenCenterPos = mainCamera.transform.position;
+
+        p=FindObjectOfType<PauseMenu>();
     }
     IEnumerator span(Vector3 end)
     {
@@ -41,7 +45,7 @@ public class CameraController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButton(1)||true)
+        if (!p.isGamePaused())
         {
             float x = Input.mousePosition.x, y = Input.mousePosition.y;
             Boolean flag = ((x >= 0 && x <= offset) && (y >= 0 && y <= offset)) || ((x >= 0 && x <= offset) && (y >= height - offset && y <= height)) || ((x >= width - offset && x <= width) && (y >= 0 && y <= offset)) || ((x >= width - offset && x <= width) && (y >= height - offset && y <= height));

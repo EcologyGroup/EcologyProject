@@ -17,7 +17,7 @@ public class CameraController1 : MonoBehaviour
 
     void Start()
     {
-        mainCamera = GetComponent<Camera>();
+        //mainCamera = GetComponent<Camera>();
         //mainCamera.transform.rotation = Quaternion.Euler(40, 0, 0);
 
     }

@@ -10,13 +10,15 @@ public class rayCast : MonoBehaviour
     [SerializeField] TextMeshProUGUI buildingname;
     [SerializeField] Image panelSprite;
     private Sprite upgradeSprite;
+    Setup setup;
     void Start()
     {
-        upgradePanelUI.SetActive(false);   
+        upgradePanelUI.SetActive(false);
+        setup = FindObjectOfType<Setup>();
     }
     void Update()
     {
-        Setup setup = FindObjectOfType<Setup>();
+        
         if (Input.GetMouseButtonDown(0))//LeftMouseClick - 1
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
