@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     private static Boolean gameIsPaused;
-    [SerializeField] GameObject pauseMenuUI, gameStatusUI;
+    [SerializeField] GameObject pauseMenuUI, gameStatusUI, upgradePanelCanvas;
 
 
     private void Start()
@@ -27,17 +27,18 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Resume(){
+        gameIsPaused = false;
         pauseMenuUI.SetActive(false);
         gameStatusUI.SetActive(true);
-        Time.timeScale = 1f;
-        gameIsPaused = false;        
+        Time.timeScale = 1f;        
     }
 
     public void Pause(){
+        gameIsPaused = true;
+        Time.timeScale = 0f;
         pauseMenuUI.SetActive(true);
         gameStatusUI.SetActive(false);
-        Time.timeScale = 0f;
-        gameIsPaused = true;
+        upgradePanelCanvas.SetActive(false);
     }
 
     public void LoadMenu(){

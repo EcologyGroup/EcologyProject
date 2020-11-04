@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class rayCast : MonoBehaviour
 {
     [SerializeField] Camera mainCamera;
-    [SerializeField] GameObject upgradePanelUI;
+    [SerializeField] GameObject upgradePanelCanvas;
     [SerializeField] TextMeshProUGUI buildingname;
     [SerializeField] Image panelSprite;
     private Sprite upgradeSprite;
@@ -14,13 +14,14 @@ public class rayCast : MonoBehaviour
     PauseMenu pause;
     void Start()
     {
-        upgradePanelUI.SetActive(false);
+        upgradePanelCanvas.SetActive(false);
         setup = FindObjectOfType<Setup>();
         pause = FindObjectOfType<PauseMenu>();
     }
     void Update()
     {
-        if(!pause.isGamePaused())
+        if (!pause.isGamePaused())
+        {
             if (Input.GetMouseButtonDown(0))//LeftMouseClick - 1
             {
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -37,17 +38,20 @@ public class rayCast : MonoBehaviour
                             displayPanel(name);
                         }
                         else
-                            upgradePanelUI.SetActive(false);
+                            upgradePanelCanvas.SetActive(false);
                     }
                 }
                 else
-                    upgradePanelUI.SetActive(false);
+                    upgradePanelCanvas.SetActive(false);
             }
+        }
+        else
+            upgradePanelCanvas.SetActive(false);
     }
     void displayPanel(string buildingname)
     {
         this.buildingname.text = buildingname;
         panelSprite.sprite = upgradeSprite;
-        upgradePanelUI.SetActive(true);   
+        upgradePanelCanvas.SetActive(true);   
     }
 }
