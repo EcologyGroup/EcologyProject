@@ -11,36 +11,38 @@ public class rayCast : MonoBehaviour
     [SerializeField] Image panelSprite;
     private Sprite upgradeSprite;
     Setup setup;
+    PauseMenu pause;
     void Start()
     {
         upgradePanelUI.SetActive(false);
         setup = FindObjectOfType<Setup>();
+        pause = FindObjectOfType<PauseMenu>();
     }
     void Update()
     {
-        
-        if (Input.GetMouseButtonDown(0))//LeftMouseClick - 1
-        {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hitInfo = Physics2D.Raycast(ray.origin, ray.direction);
-            if (hitInfo)
+        if(!pause.isGamePaused())
+            if (Input.GetMouseButtonDown(0))//LeftMouseClick - 1
             {
-                if (hitInfo.collider.CompareTag("Building"))
+                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hitInfo = Physics2D.Raycast(ray.origin, ray.direction);
+                if (hitInfo)
                 {
-                    string name = hitInfo.collider.name;
-                    Debug.Log(name);
-                    if (setup.sprite.ContainsKey(name))
+                    if (hitInfo.collider.CompareTag("Building"))
                     {
-                        upgradeSprite = setup.sprite[name];
-                        displayPanel(name);
+                        string name = hitInfo.collider.name;
+                        Debug.Log(name);
+                        if (setup.sprite.ContainsKey(name))
+                        {
+                            upgradeSprite = setup.sprite[name];
+                            displayPanel(name);
+                        }
+                        else
+                            upgradePanelUI.SetActive(false);
                     }
-                    else
-                        upgradePanelUI.SetActive(false);
                 }
+                else
+                    upgradePanelUI.SetActive(false);
             }
-            else
-                upgradePanelUI.SetActive(false);
-        }
     }
     void displayPanel(string buildingname)
     {
