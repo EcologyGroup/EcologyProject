@@ -14,12 +14,10 @@ public class Setup : MonoBehaviour
     [SerializeField] private Sprite slumsUpgrade;
 
     public Dictionary<string,Sprite> sprite;
-    public Dictionary<string, string[]> upgradeList;
-    public Dictionary<string, Sprite[]> upgradeSprite;//If required to fill images to all UpgradeButtons
+    //public Dictionary<string, Sprite> background;
     void Start()
     {
-        sprite = new Dictionary<string, Sprite>();
-        upgradeList = new Dictionary<string, string[]>();
+        sprite = new Dictionary<string, Sprite>();        
         foreach (Transform Building in Buildings)
         {
             if (Building.tag == "Untagged")
@@ -36,9 +34,5 @@ public class Setup : MonoBehaviour
         sprite.Add("Office", offUpgrade);
         sprite.Add("School", schlUpgrade);
         sprite.Add("Slums", slumsUpgrade);
-
-        //Add Upgrades for remaining Buildings similarly
-        upgradeList.Add("Hospital", new string[] { "Super Specialty Upgrade","XXX","YYY" });
-        upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station", "XXX", "YYY" , "ZZZ"});
     }
 }
