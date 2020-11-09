@@ -40,5 +40,11 @@ public class Setup : MonoBehaviour
         //Add Upgrades for remaining Buildings similarly
         upgradeList.Add("Hospital", new string[] { "Super Specialty Upgrade","XXX","YYY" });
         upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station", "XXX", "YYY" , "ZZZ"});
+        upgradeList.Add("Bank", new string[] { "B1", "XXX", "YYY", "ZZZ" });
+        upgradeList.Add("Industry", new string[] { "B1", "XXX", "YYY", "ZZZ" });
+        upgradeList.Add("Office", new string[] { "B1", "XXX", "YYY", "ZZZ" });
+        upgradeList.Add("School", new string[] { "B1", "XXX", "YYY", "ZZZ" });
+        upgradeList.Add("Slums", new string[] { "B1", "XXX", "YYY", "ZZZ" });
+
     }
 }
