@@ -75,4 +75,8 @@ public class rayCast : MonoBehaviour
         panelSprite.sprite = upgradeSprite;
         upgradePanelCanvas.SetActive(true);   
     }
+    public void upgrade(int index)
+    {
+        Upgrade.setUpgrade(index, currentBuilding);
+    }
 }
