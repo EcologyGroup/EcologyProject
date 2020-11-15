@@ -615,18 +615,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1429490552}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &209237456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,17 +738,17 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: " Your city needs improvements\n With the money provided upgrade the buildings\n
-    Press D to move right\n Press A to move left\n Press W to move up\n Press S to
-    move down\n Or press the arrow keys for movement\n Click on a buildings to see
-    the available upgrades\n Try to do as many upgrades as possible in the\n given
-    time\nIncrease your score\n Turn the city into a smart city!!!\n "
+  m_Text: "Your city needs improvements\nWith the money provided upgrade the buildings\nPress
+    D to move right\nPress A to move left\nPress W to move up\nPress S to move down\nOr
+    press the arrow keys for movement\nClick on a buildings to see the available 
+    upgrades\nTry to do as many upgrades as possible in the\ngiven time\nIncrease
+    your score\nTurn the city into a smart city!!!\n "
 --- !u!222 &218915076
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3458,7 +3446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3, y: -8}
+  m_AnchoredPosition: {x: 3, y: -7.9999847}
   m_SizeDelta: {x: -298.14096, y: -100.22421}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1429490554
