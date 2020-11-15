@@ -15,12 +15,14 @@ public class rayCast : MonoBehaviour
     private PauseMenu pause;
     private Boolean isPanelActive;
     private string currentBuilding;
+    private Upgrade upgrade1;
     void Start()
     {
         isPanelActive = false;
         upgradePanelCanvas.SetActive(isPanelActive);
         setup = FindObjectOfType<Setup>();
         pause = FindObjectOfType<PauseMenu>();
+        upgrade1 = FindObjectOfType<Upgrade>();
         currentBuilding = "Building";
     }
     void Update()
@@ -77,6 +79,6 @@ public class rayCast : MonoBehaviour
     }
     public void upgrade(int index)
     {
-        Upgrade.setUpgrade(index, currentBuilding);
+        upgrade1.setVar(index, currentBuilding);
     }
 }

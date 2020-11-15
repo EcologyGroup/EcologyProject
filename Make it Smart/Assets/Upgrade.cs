@@ -6,11 +6,19 @@ using UnityEngine.SocialPlatforms.Impl;
 public class Upgrade : MonoBehaviour
 {
     private static int score=0;
+    private int k=0;
+    private string building;
     void Start()
     {
         
     }
-    public static void setUpgrade(int i, string buildingname)
+    void Update()
+    {
+        if(k!=0)
+            StartCoroutine(setUpgrade(k,building));
+        k = 0;
+    }
+    public IEnumerator setUpgrade(int i, string buildingname)
     {
         Debug.Log("Upgrade Number :" + i + " of " + buildingname);
         switch (buildingname)
@@ -20,13 +28,19 @@ public class Upgrade : MonoBehaviour
                 switch (i)
                 {
                     case 1:
-                        
+                        yield return new WaitForSeconds(5f);
+                        score += 100;
+                        Debug.Log(score);
                         break;
                     case 2:
-
+                        yield return new WaitForSeconds(7f);
+                        score += 200;
+                        Debug.Log(score);
                         break;
                     case 3:
-                        
+                        yield return new WaitForSeconds(10f);
+                        score += 300;
+                        Debug.Log(score);
                         break;
                     case 4:
 
@@ -155,7 +169,17 @@ public class Upgrade : MonoBehaviour
                         break;
 
                 }
+                yield return null;
                 break;
         }
+    }
+    /*public void setUpgrade1(int i, string buildingname)
+    {
+        setUpgrade(i, buildingname);
+    }*/
+    public void setVar(int i,string x)
+    {
+        this.k = i;
+        this.building = x;
     }
 }

@@ -38,7 +38,7 @@ public class Setup : MonoBehaviour
         sprite.Add("Slums", slumsUpgrade);
 
         //Add Upgrades for remaining Buildings similarly
-        upgradeList.Add("Hospital", new string[] { "Super Specialty Upgrade","XXX","YYY","5","6" });
+        upgradeList.Add("Hospital", new string[] { "Super Specialty Upgrade","XXX","YYY","4","5","6" });
         upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station", "XXX", "YYY" , "ZZZ","5","6"});
         upgradeList.Add("Bank", new string[] { "B1", "XXX", "YYY", "ZZZ" });
         upgradeList.Add("Industry", new string[] { "I1", "XXX", "YYY", "ZZZ" });
