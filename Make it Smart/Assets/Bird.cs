@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Birdmovement : MonoBehaviour
+public class Bird : MonoBehaviour
 {
-    private float speed = 2f;
+    private float speed = 10f;
 
     // Start is called before the first frame update
     void Start()
