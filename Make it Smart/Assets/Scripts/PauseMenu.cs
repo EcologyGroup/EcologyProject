@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = true;
         Time.timeScale = 0f;
         pauseMenuUI.SetActive(true);
-        gameStatusUI.SetActive(false);
+        //gameStatusUI.SetActive(false);
         upgradePanelCanvas.SetActive(false);
     }
 
