@@ -11,6 +11,7 @@ public class Path : MonoBehaviour
     private int waypointIndex = 0;
     private Vector3 velocityVector;
     private Animator anim;
+    bool reverse = false;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -22,7 +23,6 @@ public class Path : MonoBehaviour
     void Update()
     {
         Move();
-        
     }
 
     private void Move()
@@ -34,7 +34,24 @@ public class Path : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, moveSpeed * Time.deltaTime);
             if(transform.position==waypoints[waypointIndex].transform.position)
             {
-                waypointIndex += 1;
+                if(waypointIndex == waypoints.Length-1)
+                {
+                    reverse = true;
+                    waypointIndex = waypoints.Length-1;
+                }
+                if(waypointIndex==0)
+                {
+                    reverse = false;
+                    waypointIndex = 0;
+                }
+                if(!reverse)
+                {
+                    waypointIndex += 1;
+                }
+                if(reverse)
+                {
+                    waypointIndex -= 1;
+                }
             }
 
         }
