@@ -15,13 +15,14 @@ public class WalkingWoman : MonoBehaviour
         anim = GetComponent<Animator>();
         myTransform = GetComponent<Transform>(); 
         myRigidbody = GetComponent<Rigidbody2D>();
-        ChangeDirection();
+        //ChangeDirection();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        //Move();
+        //UpdateAnimation();
     }
 
     void UpdateAnimation()
@@ -30,7 +31,7 @@ public class WalkingWoman : MonoBehaviour
         anim.SetFloat("MoveY", directionVector.y);
     }
 
-    void ChangeDirection()
+    /*void ChangeDirection()
     {
         int direction = Random.Range(0, 4);
         switch(direction)
@@ -49,7 +50,7 @@ public class WalkingWoman : MonoBehaviour
                 break;
         }
         UpdateAnimation();
-    }
+    }*/
 
     void Move()
     {
