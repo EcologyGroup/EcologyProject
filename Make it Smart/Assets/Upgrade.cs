@@ -58,10 +58,14 @@ public class Upgrade : MonoBehaviour
                 switch (i)
                 {
                     case 1:
-
+                        yield return new WaitForSeconds(10f);
+                        score += 260;
+                        Debug.Log(score);
                         break;
                     case 2:
-
+                        yield return new WaitForSeconds(10f);
+                        score += 350;
+                        Debug.Log(score);
                         break;
                     case 3:
 
