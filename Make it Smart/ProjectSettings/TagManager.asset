@@ -52,6 +52,9 @@ TagManager:
   - name: Props
     uniqueID: 535051357
     locked: 0
+  - name: People
+    uniqueID: 3998827907
+    locked: 0
   - name: Trees
     uniqueID: 2965947301
     locked: 0
