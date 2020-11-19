@@ -13,6 +13,14 @@ public class Setup : MonoBehaviour
     [SerializeField] private Sprite schlUpgrade;
     [SerializeField] private Sprite slumsUpgrade;
 
+    [SerializeField] private Sprite[] psUpgradeButtons;
+    [SerializeField] private Sprite[] hospUpgradeButtons;
+    [SerializeField] private Sprite[] bankUpgradeButtons;
+    [SerializeField] private Sprite[] indsUpgradeButtons;
+    [SerializeField] private Sprite[] offUpgradeButtons;
+    [SerializeField] private Sprite[] schlUpgradeButtons;
+    [SerializeField] private Sprite[] slumsUpgradeButtons;
+
     public Dictionary<string,Sprite> sprite;
     public Dictionary<string, string[]> upgradeList;
     public Dictionary<string, Sprite[]> upgradeSprite;//If required to fill images to all UpgradeButtons
@@ -46,6 +54,14 @@ public class Setup : MonoBehaviour
         upgradeList.Add("Municpality", new string[] { "B1", "B2", "B3", "B4","B5", "B6", "B7", "B8", "B9", "B10",
                                     "B11","B12"});
         upgradeList.Add("Slums", new string[] { "S1", "S2", "S3", "S4","S5","S6","S7" });
+
+        upgradeSprite.Add("PoliceStation", psUpgradeButtons);
+        upgradeSprite.Add("Hospital", hospUpgradeButtons);
+        upgradeSprite.Add("Bank", bankUpgradeButtons);
+        upgradeSprite.Add("Industry", indsUpgradeButtons);
+        upgradeSprite.Add("Office", offUpgradeButtons);
+        upgradeSprite.Add("Municpality", schlUpgradeButtons);
+        upgradeSprite.Add("Slums", slumsUpgradeButtons);
 
     }
 }

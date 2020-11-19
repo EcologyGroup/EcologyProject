@@ -73,13 +73,19 @@ public class rayCast : MonoBehaviour
     }
     void setButtons()
     {
+       
+        Sprite[] sprite = setup.upgradeSprite[currentBuilding];
         string[] upgrades=setup.upgradeList[currentBuilding];
         for (int i = 0; i < upgrades.Length; i++)
+        {
             buttons[i].SetActive(true);
+            Image upgradeImage = buttons[i].transform.GetChild(i).transform.GetChild(i).GetComponent<Image>();
+            upgradeImage.sprite = sprite[i];
+        }
         for (int i = upgrades.Length; i < buttons.Length; i++)
             buttons[i].SetActive(false);
-        Image upgradeImage = buttons[0].transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();//This can be used to access the image of the UpgradeButtons
-        upgradeImage.sprite = upgradeSprite;
+        /*Image upgradeImage = buttons[0].transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();//This can be used to access the image of the UpgradeButtons
+        upgradeImage.sprite = upgradeSprite;*/
     }
     void displayPanel(string buildingname)
     {
