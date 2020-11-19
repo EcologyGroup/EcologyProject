@@ -13,11 +13,13 @@ public class rayCast : MonoBehaviour
     [SerializeField] Image panelSprite;
     [SerializeField] GameObject[] buttons;
     private Sprite upgradeSprite;
+    private Sprite[] buttonSprites;
     private Setup setup;
     private PauseMenu pause;
     private Boolean isPanelActive;
     private string currentBuilding;
     private Upgrade upgrade1;
+    //private Image[] upgradeImage;
 
     [SerializeField] float padding = 8f;
     private GameObject popup;
@@ -58,6 +60,7 @@ public class rayCast : MonoBehaviour
                         {
                             isPanelActive = true;
                             upgradeSprite = setup.sprite[currentBuilding];
+                            buttonSprites = setup.upgradeSprite[currentBuilding];
                         }
                         if (setup.upgradeList.ContainsKey(currentBuilding))
                             setButtons();
@@ -73,19 +76,23 @@ public class rayCast : MonoBehaviour
     }
     void setButtons()
     {
-       
-        Sprite[] sprite = setup.upgradeSprite[currentBuilding];
         string[] upgrades=setup.upgradeList[currentBuilding];
+        /*Image upgradeImage = buttons[0].transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();//This can be used to access the image of the UpgradeButtons
+        upgradeImage.sprite = upgradeSprite;*/
         for (int i = 0; i < upgrades.Length; i++)
         {
+            //Image upgradeImage;
             buttons[i].SetActive(true);
-            Image upgradeImage = buttons[i].transform.GetChild(i).transform.GetChild(i).GetComponent<Image>();
-            upgradeImage.sprite = sprite[i];
+            
         }
         for (int i = upgrades.Length; i < buttons.Length; i++)
             buttons[i].SetActive(false);
-        /*Image upgradeImage = buttons[0].transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();//This can be used to access the image of the UpgradeButtons
-        upgradeImage.sprite = upgradeSprite;*/
+        for (int i = 0; i < upgrades.Length; i++)
+        {
+            Image upgradeImage = buttons[i].transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
+            upgradeImage.sprite = buttonSprites[i];
+        }
+
     }
     void displayPanel(string buildingname)
     {
@@ -99,15 +106,15 @@ public class rayCast : MonoBehaviour
     }
     public void mouseEnter(int i)
     {
-        Debug.Log("Mouse Enter Button:"+i);
+        Debug.Log("Mouse Enter Button:" + i);
         currentButton = buttons[i - 1].transform.GetChild(0).GetComponent<Button>();
         popup = buttons[i - 1].transform.GetChild(1).gameObject;
         RectTransform popupTransform = popup.GetComponent<RectTransform>();
         String upgradeDesc = setup.upgradeList[currentBuilding][i - 1];
-        TextMeshProUGUI popupText=popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI popupText = popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         popupText.text = upgradeDesc;
         Vector2 preferredSize = new Vector2(popupText.preferredWidth + padding * 2f, popupText.preferredHeight + padding * 2f);
-        Vector2 anchorPos = new Vector2(0, preferredSize.y/2f);
+        Vector2 anchorPos = new Vector2(0, preferredSize.y / 2f);
         popupTransform.sizeDelta = preferredSize;
         popupTransform.anchoredPosition = anchorPos;
         currentButton.GetComponent<Image>().color = chg;

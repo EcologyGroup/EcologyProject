@@ -7,19 +7,19 @@ public class Setup : MonoBehaviour
     [SerializeField] private Transform[] Buildings;
     [SerializeField] private Sprite psUpgrade;
     [SerializeField] private Sprite hospUpgrade;
-    [SerializeField] private Sprite bankUpgrade;
+    [SerializeField] private Sprite gridUpgrade;
     [SerializeField] private Sprite indsUpgrade;
     [SerializeField] private Sprite offUpgrade;
-    [SerializeField] private Sprite schlUpgrade;
+    [SerializeField] private Sprite MunicipalityUpgrade;
     [SerializeField] private Sprite slumsUpgrade;
 
-    [SerializeField] private Sprite[] psUpgradeButtons;
-    [SerializeField] private Sprite[] hospUpgradeButtons;
-    [SerializeField] private Sprite[] bankUpgradeButtons;
-    [SerializeField] private Sprite[] indsUpgradeButtons;
-    [SerializeField] private Sprite[] offUpgradeButtons;
-    [SerializeField] private Sprite[] schlUpgradeButtons;
-    [SerializeField] private Sprite[] slumsUpgradeButtons;
+    public Sprite[] psUpgradeButtons;
+    public Sprite[] hospUpgradeButtons;
+    public Sprite[] gridUpgradeButtons;
+    public Sprite[] indsUpgradeButtons;
+    public Sprite[] offUpgradeButtons;
+    public Sprite[] MunicipalityUpgradeButtons;
+    public Sprite[] slumsUpgradeButtons;
 
     public Dictionary<string,Sprite> sprite;
     public Dictionary<string, string[]> upgradeList;
@@ -28,6 +28,7 @@ public class Setup : MonoBehaviour
     {
         sprite = new Dictionary<string, Sprite>();
         upgradeList = new Dictionary<string, string[]>();
+        upgradeSprite = new Dictionary<string, Sprite[]>();
         foreach (Transform Building in Buildings)
         {
             if (Building.tag == "Untagged")
@@ -39,28 +40,28 @@ public class Setup : MonoBehaviour
     {
         sprite.Add("PoliceStation", psUpgrade);
         sprite.Add("Hospital", hospUpgrade);
-        sprite.Add("Bank", bankUpgrade);
+        sprite.Add("Grid", gridUpgrade);
         sprite.Add("Industry", indsUpgrade);
         sprite.Add("Office", offUpgrade);
-        sprite.Add("Municpality", schlUpgrade);
+        sprite.Add("Municpality", MunicipalityUpgrade);
         sprite.Add("Slums", slumsUpgrade);
 
         //Add Upgrades for remaining Buildings similarly
         upgradeList.Add("Hospital", new string[] { "Super Specialty Upgrade\nThis is a Super Speciality Upgrade\nClick on the Button","XXX","YYY","4","5","6" });
         upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station", "XXX", "YYY" , "ZZZ","5","6"});
-        upgradeList.Add("Bank", new string[] { "B1", "XXX", "YYY", "ZZZ" });
+        upgradeList.Add("Grid", new string[] { "B1", "XXX", "YYY", "ZZZ" });
         upgradeList.Add("Industry", new string[] { "I1", "XXX", "YYY", "ZZZ" });
         upgradeList.Add("Office", new string[] { "O1", "O2", "O3", "O4", "O5", "O6" });
         upgradeList.Add("Municpality", new string[] { "B1", "B2", "B3", "B4","B5", "B6", "B7", "B8", "B9", "B10",
                                     "B11","B12"});
         upgradeList.Add("Slums", new string[] { "S1", "S2", "S3", "S4","S5","S6","S7" });
 
-        upgradeSprite.Add("PoliceStation", psUpgradeButtons);
-        upgradeSprite.Add("Hospital", hospUpgradeButtons);
-        upgradeSprite.Add("Bank", bankUpgradeButtons);
+        upgradeSprite.Add("PoliceStation",psUpgradeButtons);
+        upgradeSprite.Add("Hospital",hospUpgradeButtons);
+        upgradeSprite.Add("Grid", gridUpgradeButtons);
         upgradeSprite.Add("Industry", indsUpgradeButtons);
         upgradeSprite.Add("Office", offUpgradeButtons);
-        upgradeSprite.Add("Municpality", schlUpgradeButtons);
+        upgradeSprite.Add("Municpality", MunicipalityUpgradeButtons);
         upgradeSprite.Add("Slums", slumsUpgradeButtons);
 
     }
