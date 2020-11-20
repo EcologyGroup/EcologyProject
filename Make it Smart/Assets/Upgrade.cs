@@ -1,22 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class Upgrade : MonoBehaviour
 {
-    private static int score=0;
-    private int k=0;
-    private string building;
+    private static int score;
+    private int upgradeIndex;
+    private string currentBuilding;
+    [SerializeField] TextMeshProUGUI scoreText;
     void Start()
     {
-        
+        score = 0;
+        upgradeIndex = 0;
+        currentBuilding = null;
+        scoreText.text = "" + score;
     }
     void Update()
     {
-        if(k!=0)
-            StartCoroutine(setUpgrade(k,building));
-        k = 0;
+        if(currentBuilding!=null)
+            StartCoroutine(setUpgrade(upgradeIndex, currentBuilding));
+        currentBuilding = null;
     }
     public IEnumerator setUpgrade(int i, string buildingname)
     {
@@ -24,7 +30,6 @@ public class Upgrade : MonoBehaviour
         switch (buildingname)
         {
             case "Hospital":
-                //if else ladder for each upgrade and seperate function for that
                 switch (i)
                 {
                     case 1:
@@ -176,14 +181,11 @@ public class Upgrade : MonoBehaviour
                 yield return null;
                 break;
         }
+        scoreText.text = "" + score;
     }
-    /*public void setUpgrade1(int i, string buildingname)
+    public void setState(int upgradeIndex,string currentBuilding)
     {
-        setUpgrade(i, buildingname);
-    }*/
-    public void setVar(int i,string x)
-    {
-        this.k = i;
-        this.building = x;
+        this.upgradeIndex = upgradeIndex;
+        this.currentBuilding = currentBuilding;
     }
 }

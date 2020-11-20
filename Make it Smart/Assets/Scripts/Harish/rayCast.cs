@@ -19,12 +19,12 @@ public class rayCast : MonoBehaviour
     private Boolean isPanelActive;
     private string currentBuilding;
     private Upgrade upgrade1;
-    //private Image[] upgradeImage;
 
     [SerializeField] float padding = 8f;
     private GameObject popup;
     private Button currentButton;
-    private Color def, chg;
+    private Color def;
+    [SerializeField] private Color chg;
     void Start()
     {
         isPanelActive = false;
@@ -77,14 +77,8 @@ public class rayCast : MonoBehaviour
     void setButtons()
     {
         string[] upgrades=setup.upgradeList[currentBuilding];
-        /*Image upgradeImage = buttons[0].transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();//This can be used to access the image of the UpgradeButtons
-        upgradeImage.sprite = upgradeSprite;*/
         for (int i = 0; i < upgrades.Length; i++)
-        {
-            //Image upgradeImage;
             buttons[i].SetActive(true);
-            
-        }
         for (int i = upgrades.Length; i < buttons.Length; i++)
             buttons[i].SetActive(false);
         for (int i = 0; i < upgrades.Length; i++)
@@ -92,7 +86,6 @@ public class rayCast : MonoBehaviour
             Image upgradeImage = buttons[i].transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
             upgradeImage.sprite = buttonSprites[i];
         }
-
     }
     void displayPanel(string buildingname)
     {
@@ -102,11 +95,11 @@ public class rayCast : MonoBehaviour
     }
     public void upgrade(int index)
     {
-        upgrade1.setVar(index, currentBuilding);
+        upgrade1.setState(index, currentBuilding);
     }
     public void mouseEnter(int i)
     {
-        Debug.Log("Mouse Enter Button:" + i);
+        //Debug.Log("Mouse Enter Button:" + i);
         currentButton = buttons[i - 1].transform.GetChild(0).GetComponent<Button>();
         popup = buttons[i - 1].transform.GetChild(1).gameObject;
         RectTransform popupTransform = popup.GetComponent<RectTransform>();
@@ -122,7 +115,7 @@ public class rayCast : MonoBehaviour
     }
     public void mouseExit(int i)
     {
-        Debug.Log("Mouse Exit");
+        //Debug.Log("Mouse Exit");
         currentButton.GetComponent<Image>().color = def;
         popup.SetActive(false);
     }
