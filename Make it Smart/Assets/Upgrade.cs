@@ -10,6 +10,7 @@ public class Upgrade : MonoBehaviour
     private static int score;
     private int upgradeIndex;
     private string currentBuilding;
+    private Setup setup;
     [SerializeField] TextMeshProUGUI scoreText;
     void Start()
     {
@@ -17,16 +18,38 @@ public class Upgrade : MonoBehaviour
         upgradeIndex = 0;
         currentBuilding = null;
         scoreText.text = "" + score;
+        setup = FindObjectOfType<Setup>();
     }
     void Update()
     {
-        if(currentBuilding!=null)
-            StartCoroutine(setUpgrade(upgradeIndex, currentBuilding));
+        if (currentBuilding != null)
+        {
+            int upgradeCost = setup.upgradeCost[currentBuilding][upgradeIndex - 1];
+            if (MoneyScript.checkCash(upgradeCost))
+            {
+                float time = setup.upgradeTime[currentBuilding][upgradeIndex - 1];
+                int incScore = setup.upgradeScores[currentBuilding][upgradeIndex - 1];
+                MoneyScript.updateCash(upgradeCost, '-');
+                StartCoroutine(setUpgrade(upgradeIndex, currentBuilding, incScore, time));
+            }
+            else 
+            {
+                //take reference of a panel close to the Cash field and display something : "Insufficient Cash"
+                Debug.Log("Insufficient Cash");
+            }
+        }
         currentBuilding = null;
     }
-    public IEnumerator setUpgrade(int i, string buildingname)
+    public IEnumerator setUpgrade(int upgradeIndex, string currentBuilding, int incScore, float time)//paramaters upgradeIndex and currentBuilding in case we need it later
     {
-        Debug.Log("Upgrade Number :" + i + " of " + buildingname);
+        Debug.Log("Upgrade Number :" + upgradeIndex + " of " + currentBuilding);
+        //All Upgrades in common
+        //Locked all upgrades after clicking button (Please change accordingly, using switch case below) 
+        setup.isButtonDisabled[currentBuilding][upgradeIndex - 1] = true;
+        yield return new WaitForSeconds(time);
+        score += incScore;
+        //I don't think we need a switch case unless we want to give special changes for some of the upgrades ie Sprite Change etc.
+        /*
         switch (buildingname)
         {
             case "Hospital":
@@ -181,6 +204,7 @@ public class Upgrade : MonoBehaviour
                 yield return null;
                 break;
         }
+        */
         scoreText.text = "" + score;
     }
     public void setState(int upgradeIndex,string currentBuilding)

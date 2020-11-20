@@ -18,7 +18,6 @@ public class rayCast : MonoBehaviour
     private PauseMenu pause;
     private Boolean isPanelActive;
     private string currentBuilding;
-    private Upgrade upgrade1;
 
     [SerializeField] float padding = 8f;
     private GameObject popup;
@@ -31,7 +30,6 @@ public class rayCast : MonoBehaviour
         upgradePanelCanvas.SetActive(isPanelActive);
         setup = FindObjectOfType<Setup>();
         pause = FindObjectOfType<PauseMenu>();
-        upgrade1 = FindObjectOfType<Upgrade>();
         currentBuilding = "Building";
 
         def = buttons[0].transform.GetChild(0).GetComponent<Image>().color;
@@ -85,6 +83,9 @@ public class rayCast : MonoBehaviour
         {
             Image upgradeImage = buttons[i].transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
             upgradeImage.sprite = buttonSprites[i];
+            //reduced opacity of sprite if locked
+            if (setup.isButtonDisabled[currentBuilding][i])
+                upgradeImage.color = new Color(1, 1, 1, 0.5f);
         }
     }
     void displayPanel(string buildingname)
@@ -95,7 +96,10 @@ public class rayCast : MonoBehaviour
     }
     public void upgrade(int index)
     {
-        upgrade1.setState(index, currentBuilding);
+        if (!setup.isButtonDisabled[currentBuilding][index - 1])
+            FindObjectOfType<Upgrade>().setState(index, currentBuilding);
+        else
+            Debug.Log("Locked");
     }
     public void mouseEnter(int i)
     {
