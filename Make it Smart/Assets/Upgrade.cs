@@ -40,12 +40,17 @@ public class Upgrade : MonoBehaviour
         }
         currentBuilding = null;
     }
+    private void disableButton(string currentBuilding, int upgradeIndex)
+    {
+        setup.isButtonDisabled[currentBuilding][upgradeIndex - 1] = true;
+        rayCast.refreshPanel();
+    }
     public IEnumerator setUpgrade(int upgradeIndex, string currentBuilding, int incScore, float time)//paramaters upgradeIndex and currentBuilding in case we need it later
     {
         Debug.Log("Upgrade Number :" + upgradeIndex + " of " + currentBuilding);
         //All Upgrades in common
         //Locked all upgrades after clicking button (Please change accordingly, using switch case below) 
-        setup.isButtonDisabled[currentBuilding][upgradeIndex - 1] = true;
+        disableButton(currentBuilding, upgradeIndex);
         yield return new WaitForSeconds(time);
         score += incScore;
         //I don't think we need a switch case unless we want to give special changes for some of the upgrades ie Sprite Change etc.
