@@ -23,7 +23,8 @@ public class rayCast : MonoBehaviour
     private GameObject popup;
     private Button currentButton;
     private Color def;
-    [SerializeField] private Color chg;
+    [SerializeField] private Color enabled;
+    [SerializeField] private Color disabled;
     void Start()
     {
         isPanelActive = false;
@@ -33,7 +34,8 @@ public class rayCast : MonoBehaviour
         currentBuilding = "Building";
 
         def = buttons[0].transform.GetChild(0).GetComponent<Image>().color;
-        chg = new Color(0, 0.90f, 0.30f, 1);
+        enabled = new Color(0, 0.90f, 0.30f, 1);
+        disabled = new Color(0.8f, 0.05f, 0.05f, 1);
     }
     void Update()
     {
@@ -72,7 +74,11 @@ public class rayCast : MonoBehaviour
         else
             upgradePanelCanvas.SetActive(false);
     }
-    void setButtons()
+    public static void refreshPanel()
+    {
+        FindObjectOfType<rayCast>().setButtons();
+    }
+    public void setButtons()
     {
         string[] upgrades=setup.upgradeList[currentBuilding];
         for (int i = 0; i < upgrades.Length; i++)
@@ -86,6 +92,8 @@ public class rayCast : MonoBehaviour
             //reduced opacity of sprite if locked
             if (setup.isButtonDisabled[currentBuilding][i])
                 upgradeImage.color = new Color(1, 1, 1, 0.5f);
+            else
+                upgradeImage.color = new Color(1, 1, 1, 1f);
         }
     }
     void displayPanel(string buildingname)
@@ -109,12 +117,20 @@ public class rayCast : MonoBehaviour
         RectTransform popupTransform = popup.GetComponent<RectTransform>();
         String upgradeDesc = setup.upgradeList[currentBuilding][i - 1];
         TextMeshProUGUI popupText = popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        popupText.text = upgradeDesc;
+        if (!setup.isButtonDisabled[currentBuilding][i - 1]) 
+        {
+            popupText.text = upgradeDesc;
+            currentButton.GetComponent<Image>().color = enabled;
+        }
+        else
+        {
+            popupText.text = "Completed";
+            currentButton.GetComponent<Image>().color = disabled;
+        }
         Vector2 preferredSize = new Vector2(popupText.preferredWidth + padding * 2f, popupText.preferredHeight + padding * 2f);
         Vector2 anchorPos = new Vector2(0, preferredSize.y / 2f);
         popupTransform.sizeDelta = preferredSize;
         popupTransform.anchoredPosition = anchorPos;
-        currentButton.GetComponent<Image>().color = chg;
         popup.SetActive(true);
     }
     public void mouseExit(int i)
