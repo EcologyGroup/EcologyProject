@@ -11,7 +11,6 @@ public class CarPath : MonoBehaviour
     private int waypointIndex = 0;
     private Vector3 velocityVector;
     private Animator anim;
-    bool reverse = false;
     //public float time1 = 1f;
     void Start()
     {
@@ -29,46 +28,40 @@ public class CarPath : MonoBehaviour
 
     private void Move()
     {
-     
-            if (waypoints.Length != 0)
+        if (waypointIndex <= waypoints.Length - 1)
+        {
+            velocityVector = new Vector3(waypoints[waypointIndex].transform.position.x - transform.position.x, waypoints[waypointIndex].transform.position.y - transform.position.y, 0);
+            UpdateAnimation();
+            transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, moveSpeed * Time.deltaTime);
+            
+            if (transform.position == waypoints[waypointIndex].transform.position)
             {
-               if(waypointIndex <= waypoints.Length - 1)
-               {
-                    velocityVector = new Vector3(waypoints[waypointIndex].transform.position.x - transform.position.x, waypoints[waypointIndex].transform.position.y - transform.position.y, 0);
-                    UpdateAnimation();
-                    transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, moveSpeed * Time.deltaTime);
-                if (waypointIndex == waypoints.Length - 1)
+                waypointIndex += 1;
+
+                /*if (waypointIndex == 0)
                 {
-                    reverse = true;
-                    transform.position = waypoints[0].transform.position;
-                    waypointIndex = 0;
                     reverse = false;
+                    waypointIndex = 0;
                 }
-                if (transform.position == waypoints[waypointIndex].transform.position)
-                    {
-                        
-                    if (!reverse)
-                    {
-                        waypointIndex += 1;
-                    }
-                    /*if (waypointIndex == 0)
-                    {
-                        reverse = false;
-                        waypointIndex = 0;
-                    }
-                    if (!reverse)
-                    {
-                        waypointIndex += 1;
-                    }
-                    if (reverse)
-                    {
-                        waypointIndex -= 1;
-                    }*/
-                    //yield return new WaitForSeconds(time1);
-                    }
-               
-               }
+                if (!reverse)
+                {
+                    waypointIndex += 1;
+                }
+                if (reverse)
+                {
+                    waypointIndex -= 1;
+                }*/
+                //yield return new WaitForSeconds(time1);
             }
+            if (waypointIndex >= waypoints.Length - 1)
+            {
+
+                transform.position = waypoints[0].transform.position;
+                waypointIndex = 0;
+
+            }
+
+        }
     }
     void UpdateAnimation()
     {
