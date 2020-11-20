@@ -12,11 +12,13 @@ public class CarPath : MonoBehaviour
     private Vector3 velocityVector;
     private Animator anim;
     bool reverse = false;
+    //public float time1 = 1f;
     void Start()
     {
         anim = GetComponent<Animator>();
         transform.position = waypoints[waypointIndex].transform.position;
         //myRigidbody = GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
@@ -27,21 +29,29 @@ public class CarPath : MonoBehaviour
 
     private void Move()
     {
-        if (waypoints.Length != 0)
-        {
-            if (waypointIndex <= waypoints.Length - 1)
+     
+            if (waypoints.Length != 0)
             {
-                velocityVector = new Vector3(waypoints[waypointIndex].transform.position.x - transform.position.x, waypoints[waypointIndex].transform.position.y - transform.position.y, 0);
-                UpdateAnimation();
-                transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, moveSpeed * Time.deltaTime);
-                if (transform.position == waypoints[waypointIndex].transform.position)
+               if(waypointIndex <= waypoints.Length - 1)
+               {
+                    velocityVector = new Vector3(waypoints[waypointIndex].transform.position.x - transform.position.x, waypoints[waypointIndex].transform.position.y - transform.position.y, 0);
+                    UpdateAnimation();
+                    transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, moveSpeed * Time.deltaTime);
+                if (waypointIndex == waypoints.Length - 1)
                 {
-                    if (waypointIndex == waypoints.Length - 1)
+                    reverse = true;
+                    transform.position = waypoints[0].transform.position;
+                    waypointIndex = 0;
+                    reverse = false;
+                }
+                if (transform.position == waypoints[waypointIndex].transform.position)
                     {
-                        reverse = true;
-                        waypointIndex = waypoints.Length - 1;
+                        
+                    if (!reverse)
+                    {
+                        waypointIndex += 1;
                     }
-                    if (waypointIndex == 0)
+                    /*if (waypointIndex == 0)
                     {
                         reverse = false;
                         waypointIndex = 0;
@@ -53,10 +63,12 @@ public class CarPath : MonoBehaviour
                     if (reverse)
                     {
                         waypointIndex -= 1;
+                    }*/
+                    //yield return new WaitForSeconds(time1);
                     }
-                }
+               
+               }
             }
-        }
     }
     void UpdateAnimation()
     {
