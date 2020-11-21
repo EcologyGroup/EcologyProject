@@ -56,14 +56,14 @@ public class Setup : MonoBehaviour
         sprite.Add("Slums", slumsUpgrade);
 
         //Add Upgrades for remaining Buildings similarly
-        upgradeList.Add("Hospital", new string[] { "Super Specialty Upgrade\nThis is a Super Speciality Upgrade\nClick on the Button","XXX","YYY","4","5","6" });
-        upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station", "XXX", "YYY" , "ZZZ","5","6"});
-        upgradeList.Add("Grid", new string[] { "B1", "XXX", "YYY", "ZZZ" });
-        upgradeList.Add("Industry", new string[] { "I1", "XXX", "YYY", "ZZZ" });
-        upgradeList.Add("Office", new string[] { "O1", "O2", "O3", "O4", "O5", "O6" });
-        upgradeList.Add("Municpality", new string[] { "B1", "B2", "B3", "B4","B5", "B6", "B7", "B8", "B9", "B10",
-                                    "B11","B12"});
-        upgradeList.Add("Slums", new string[] { "S1", "S2", "S3", "S4","S5","S6","S7" });
+        upgradeList.Add("Hospital", new string[] { "Super Specialty Upgrade", "Modernize Medical Equipment", "eHealthcare", "Awareness Camps", "Biomedical Waste Treatment", "Accidents" });
+        upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station", "Modernize Equipment", "Public Safety", "Awareness Camps", "Digitalize Police Data", "Cyber Security" });
+        upgradeList.Add("Grid", new string[] { "Solar Field", "Electric Charging Station", "Smart Grid", "Windmill" });
+        upgradeList.Add("Industry", new string[] { "", "XXX", "YYY", "ZZZ" });
+        upgradeList.Add("Office", new string[] { "Infrastructure", "Wireless Networks", "Awareness Camps", "Training Programs", "Startup Incubators", "Online Deliveries" });
+        upgradeList.Add("Municpality", new string[] { "Garbage Collection", "Smart Bins", "Sewage System", "Water Treatment","Increase Tax", "Public Transport", "Intelligent transport systems", "Road Maintaince", "Transportation Stations", "Cabs",
+                                    "Public Toilets","Pollution Check"});
+        upgradeList.Add("Slums", new string[] { "Affordable Housing", "Water Supply", "Sanitation", "Electricity","Health Facilities","Roads","Welfare Schemes" });
 
         //default value of Boolean is false
         isButtonDisabled.Add("Hospital", new Boolean[6]);
