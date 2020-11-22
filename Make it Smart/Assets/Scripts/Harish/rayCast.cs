@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 public class rayCast : MonoBehaviour
 {
-    [SerializeField] Camera mainCamera;
-    [SerializeField] GameObject upgradePanelCanvas;
-    [SerializeField] TextMeshProUGUI buildingname;
-    [SerializeField] Image panelSprite;
-    [SerializeField] GameObject[] buttons;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private GameObject upgradePanelCanvas;
+    [SerializeField] private TextMeshProUGUI buildingname;
+    [SerializeField] private Image panelSprite;
+    [SerializeField] private GameObject[] buttons;
     private Sprite upgradeSprite;
     private Sprite[] buttonSprites;
     private Setup setup;
@@ -78,7 +78,7 @@ public class rayCast : MonoBehaviour
     {
         FindObjectOfType<rayCast>().setButtons();
     }
-    public void setButtons()
+    private void setButtons()
     {
         string[] upgrades=setup.upgradeList[currentBuilding];
         for (int i = 0; i < upgrades.Length; i++)
@@ -96,13 +96,13 @@ public class rayCast : MonoBehaviour
                 upgradeImage.color = new Color(1, 1, 1, 1f);
         }
     }
-    void displayPanel(string buildingname)
+    private void displayPanel(string buildingname)
     {
         this.buildingname.text = buildingname;
         panelSprite.sprite = upgradeSprite;
         upgradePanelCanvas.SetActive(true);   
     }
-    public void upgrade(int index)
+    private void upgrade(int index)
     {
         if (!setup.isButtonDisabled[currentBuilding][index - 1])
             FindObjectOfType<Upgrade>().setState(index, currentBuilding);

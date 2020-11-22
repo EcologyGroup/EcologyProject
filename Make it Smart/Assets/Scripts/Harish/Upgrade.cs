@@ -4,6 +4,7 @@ using TMPro;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UIElements;
 
 public class Upgrade : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class Upgrade : MonoBehaviour
     private int upgradeIndex;
     private string currentBuilding;
     private Setup setup;
-    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private GameObject DebugMessagePanel;
+    private IEnumerator currentCoroutine;
     void Start()
     {
         score = 0;
@@ -35,7 +38,11 @@ public class Upgrade : MonoBehaviour
             else 
             {
                 //take reference of a panel close to the Cash field and display something : "Insufficient Cash"
-                Debug.Log("Insufficient Cash");
+                //Debug.Log("Insufficient Cash");
+                if (currentCoroutine != null)
+                    StopCoroutine(currentCoroutine);
+                currentCoroutine = DebugMessage("Insufficient Cash");
+                StartCoroutine(currentCoroutine);
             }
         }
         currentBuilding = null;
@@ -45,7 +52,25 @@ public class Upgrade : MonoBehaviour
         setup.isButtonDisabled[currentBuilding][upgradeIndex - 1] = true;
         rayCast.refreshPanel();
     }
-    public IEnumerator setUpgrade(int upgradeIndex, string currentBuilding, int incScore, float time)//paramaters upgradeIndex and currentBuilding in case we need it later
+    private IEnumerator DebugMessage(string msg)
+    {
+        float fadeTime = 2f;
+        int padding = 4;
+        CanvasGroup panel=DebugMessagePanel.gameObject.GetComponent<CanvasGroup>();
+        TextMeshProUGUI message = DebugMessagePanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        message.text = msg;
+        DebugMessagePanel.GetComponent<RectTransform>().sizeDelta = new Vector2(message.preferredWidth + padding * 2f, message.preferredHeight + padding * 2f);
+        DebugMessagePanel.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        while (panel.alpha > 0) 
+        {
+            panel.alpha -= Time.deltaTime * fadeTime;
+            yield return null;
+        }
+        DebugMessagePanel.SetActive(false);
+        panel.alpha = 1;
+    }
+    private IEnumerator setUpgrade(int upgradeIndex, string currentBuilding, int incScore, float time)//paramaters upgradeIndex and currentBuilding in case we need it later
     {
         Debug.Log("Upgrade Number :" + upgradeIndex + " of " + currentBuilding);
         //All Upgrades in common
