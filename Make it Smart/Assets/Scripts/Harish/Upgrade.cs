@@ -54,17 +54,17 @@ public class Upgrade : MonoBehaviour
     }
     private IEnumerator DebugMessage(string msg)
     {
-        float fadeTime = 2f;
+        float fadeTime = 1.5f;
         int padding = 4;
         CanvasGroup panel=DebugMessagePanel.gameObject.GetComponent<CanvasGroup>();
         TextMeshProUGUI message = DebugMessagePanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         message.text = msg;
         DebugMessagePanel.GetComponent<RectTransform>().sizeDelta = new Vector2(message.preferredWidth + padding * 2f, message.preferredHeight + padding * 2f);
         DebugMessagePanel.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(fadeTime);
         while (panel.alpha > 0) 
         {
-            panel.alpha -= Time.deltaTime * fadeTime;
+            panel.alpha -= Time.deltaTime / fadeTime;
             yield return null;
         }
         DebugMessagePanel.SetActive(false);
