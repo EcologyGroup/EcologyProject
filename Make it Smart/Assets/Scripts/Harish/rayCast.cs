@@ -41,14 +41,13 @@ public class rayCast : MonoBehaviour
     {
         if (!pause.isGamePaused())
         {
-            
             if (Input.GetMouseButtonDown(0))//LeftMouseClick - 0
             {
-                isPanelActive = false;
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D hitInfo = Physics2D.Raycast(ray.origin, ray.direction);
                 if (hitInfo)
-                    if (hitInfo.collider.CompareTag("UpgradeCanvas"))
+                {
+                    if (hitInfo.collider.CompareTag("UpgradeCanvas") && isPanelActive) 
                     {
                         isPanelActive = true;
                     }
@@ -62,9 +61,17 @@ public class rayCast : MonoBehaviour
                             upgradeSprite = setup.sprite[currentBuilding];
                             buttonSprites = setup.upgradeSprite[currentBuilding];
                         }
+                        else
+                            isPanelActive = false;
                         if (setup.upgradeList.ContainsKey(currentBuilding))
                             setButtons();
                     }
+                    else
+                        isPanelActive = false;
+                }
+                else
+                    isPanelActive = false;
+
             }
             if (isPanelActive)
                 displayPanel(currentBuilding);
