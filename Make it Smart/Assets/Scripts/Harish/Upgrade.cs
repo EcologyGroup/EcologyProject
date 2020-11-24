@@ -57,6 +57,7 @@ public class Upgrade : MonoBehaviour
         float fadeTime = 1.5f;
         int padding = 4;
         CanvasGroup panel=DebugMessagePanel.gameObject.GetComponent<CanvasGroup>();
+        panel.alpha = 1;
         TextMeshProUGUI message = DebugMessagePanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         message.text = msg;
         DebugMessagePanel.GetComponent<RectTransform>().sizeDelta = new Vector2(message.preferredWidth + padding * 2f, message.preferredHeight + padding * 2f);
