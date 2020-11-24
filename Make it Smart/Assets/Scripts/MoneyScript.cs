@@ -9,13 +9,15 @@ using UnityEngine.UI;
 
 public class MoneyScript : MonoBehaviour
 {
+    [SerializeField] GameObject panel;
     [SerializeField] private float ChangeTime = 10.0f;
     [SerializeField] private int IncomeValue = 500;
     private static float changeTime;
     private static int incomeValue;
     private static int totalAmount;
     private static TextMeshProUGUI moneyText;
-    private static IEnumerator currentCoroutine;
+    private Image cashPanelImage;
+    
     public static Boolean checkCash(int amt)
     {
         return amt <= totalAmount;
@@ -25,17 +27,20 @@ public class MoneyScript : MonoBehaviour
         if (c == '+') totalAmount += amt;
         else if (c == '-') totalAmount -= amt;
         moneyText.text = "" + totalAmount;
+        FindObjectOfType<MoneyScript>().StartCoroutine(colorBlink());
     }
-    public void resumeIncome()
+    private void resumeIncome()
     {
         moneyText = gameObject.GetComponent<TextMeshProUGUI>();
         moneyText.text = string.Format("{0:0}", totalAmount);
-        currentCoroutine = income();
-        StartCoroutine(currentCoroutine);
+        StartCoroutine(income());
+    }
+    private static IEnumerator colorBlink()
+    {
+        yield return null;
     }
     public static IEnumerator refresh()
     {
-
         float t = Timer.timeRemaining % changeTime;
         if (t != 0)
         {
@@ -46,6 +51,7 @@ public class MoneyScript : MonoBehaviour
     }
     void Start()
     {
+        cashPanelImage = panel.GetComponent<Image>();
         changeTime = ChangeTime;
         incomeValue = IncomeValue;
         resumeIncome();   
