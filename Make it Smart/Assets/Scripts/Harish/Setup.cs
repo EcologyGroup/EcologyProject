@@ -56,14 +56,15 @@ public class Setup : MonoBehaviour
         sprite.Add("Slums", slumsUpgrade);
 
         //Add Upgrades for remaining Buildings similarly
-        upgradeList.Add("Hospital", new string[] { "Super Specialty Upgrade", 
-            "Modernize Medical Equipment",
-            "eHealthcare", "Awareness Camps",
-            "Biomedical Waste Treatment", "Accidents" });
+        upgradeList.Add("Hospital", new string[] { "Multi Super-Specialty hospital(Cost: 7000)", 
+            "Modernize Medical Equipment(Cost: 1000)",
+            "e-Healthcare initiative(Cost: 1500)", "Organize health awareness Camps(Cost: 400)",
+            "Proper Biomedical Waste Treatment(Cost: 800)" });
 
-        upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station", 
-            "Modernize Equipment", "Public Safety", "Awareness Camps", 
-            "Digitalize Police Data", "Cyber Security" });
+        upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station(Cost: 1200)", 
+            "Modernize Police Equipment(Cost: 1400)", "CCTV monitoring in City(Cost: 1750)", 
+            "Eco-friendly traffic awareness mission(Cost: 450)", 
+            "Digitalize police records(Cost: 500)", "Cyber security cell(Cost: 1000)" });
         upgradeList.Add("Grid", new string[] { "Solar Field", "Electric Charging Station",
             "Smart Grid", "Windmill" });
         upgradeList.Add("Industry", new string[] { "Internet of Things", 
