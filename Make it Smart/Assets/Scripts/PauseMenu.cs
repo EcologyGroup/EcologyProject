@@ -7,13 +7,16 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     private static Boolean gameIsPaused;
-    [SerializeField] GameObject pauseMenuUI, gameStatusUI, upgradePanelCanvas;
-
+    [SerializeField] GameObject[] panels;//when game is paused
+    //0th Index-Upgrade Description Button
+    //1st Index-Pause Button
+    //2nd Index-Money
+    //Last Index-PauseMenuUI
 
     private void Start()
     {
         gameIsPaused = false;
-        pauseMenuUI.SetActive(gameIsPaused);
+        panels[panels.Length - 1].SetActive(gameIsPaused);
     }
     void Update()
     {
@@ -28,21 +31,23 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume(){
         gameIsPaused = false;
-        pauseMenuUI.SetActive(false);
-        gameStatusUI.SetActive(true);
-        Time.timeScale = 1f;        
+        panels[panels.Length - 1].SetActive(false);
+        for (int i = 0; i < 3; i++)
+            panels[i].SetActive(true);
+        Time.timeScale = 1f;
+        StartCoroutine(MoneyScript.refresh());
     }
 
     public void Pause(){
         gameIsPaused = true;
         Time.timeScale = 0f;
-        pauseMenuUI.SetActive(true);
-        //gameStatusUI.SetActive(false);
-        upgradePanelCanvas.SetActive(false);
+        panels[panels.Length - 1].SetActive(true);
+        for (int i = 0; i < panels.Length - 1; i++) 
+            panels[i].SetActive(false);
     }
 
-    public void LoadMenu(){
-        //GameObject.Find("Main Camera").GetComponent<CameraController>().enabled = true;
+    public void LoadMenu()
+    {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
