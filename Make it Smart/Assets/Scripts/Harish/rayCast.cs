@@ -15,7 +15,6 @@ public class rayCast : MonoBehaviour
     private Sprite upgradeSprite;
     private Sprite[] buttonSprites;
     private Setup setup;
-    private PauseMenu pause;
     private Boolean isPanelActive;
     private string currentBuilding;
 
@@ -30,7 +29,6 @@ public class rayCast : MonoBehaviour
         isPanelActive = false;
         upgradePanelCanvas.SetActive(isPanelActive);
         setup = FindObjectOfType<Setup>();
-        pause = FindObjectOfType<PauseMenu>();
         currentBuilding = "Building";
 
         def = buttons[0].transform.GetChild(0).GetComponent<Image>().color;
@@ -39,7 +37,7 @@ public class rayCast : MonoBehaviour
     }
     void Update()
     {
-        if (!pause.isGamePaused())
+        if (!PauseMenu.isGamePaused())
         {
             if (Input.GetMouseButtonDown(0))//LeftMouseClick - 0
             {

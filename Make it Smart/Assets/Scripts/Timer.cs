@@ -10,18 +10,15 @@ public class Timer : MonoBehaviour
     bool timerIsRunning = false;
     public TextMeshProUGUI timeText;
     public GameObject ResultPanel;
-    private PauseMenu pauseObj;
 
-    private void Start()
+    void Start()
     {
         timeText = gameObject.GetComponent<TextMeshProUGUI>();
-        pauseObj = FindObjectOfType<PauseMenu>();
         timerIsRunning = true;
     }
-
     void Update()
     {
-        if (!pauseObj.isGamePaused())
+        if (!PauseMenu.isGamePaused())
         {
             if (timerIsRunning)
             {
