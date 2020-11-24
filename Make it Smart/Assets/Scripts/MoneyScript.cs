@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class MoneyScript : MonoBehaviour
 {
-    [SerializeField] GameObject panel;
+    [SerializeField] private GameObject cashPanel;
     [SerializeField] private float ChangeTime = 10.0f;
     [SerializeField] private int IncomeValue = 500;
     private static float changeTime;
@@ -17,17 +17,26 @@ public class MoneyScript : MonoBehaviour
     private static int totalAmount;
     private static TextMeshProUGUI moneyText;
     private Image cashPanelImage;
+    private IEnumerator currentCoroutine;
     
     public static Boolean checkCash(int amt)
     {
         return amt <= totalAmount;
     }
-    public static void updateCash(int amt, char c)
+    public void updateCash(int amt, char c)
     {
         if (c == '+') totalAmount += amt;
         else if (c == '-') totalAmount -= amt;
         moneyText.text = "" + totalAmount;
-        FindObjectOfType<MoneyScript>().StartCoroutine(colorBlink());
+        Color clr;
+        if (c == '+')
+            clr = Color.green;
+        else
+            clr = Color.red;
+        if (currentCoroutine != null)
+            StopCoroutine(currentCoroutine);
+        currentCoroutine = colorBlink(2, 0.2f, clr);
+        StartCoroutine(currentCoroutine);
     }
     private void resumeIncome()
     {
@@ -35,9 +44,21 @@ public class MoneyScript : MonoBehaviour
         moneyText.text = string.Format("{0:0}", totalAmount);
         StartCoroutine(income());
     }
-    private static IEnumerator colorBlink()
+    private IEnumerator colorBlink(float blinkTime, float blinkInterval, Color blinkColor)
     {
-        yield return null;
+        float startTime = Time.time;
+        Color org = cashPanelImage.color;
+        int c = 0;
+        while (Time.time - startTime <= blinkTime)
+        {
+            if (c % 2 == 0)
+                cashPanelImage.color = blinkColor;
+            else
+                cashPanelImage.color = org;
+            c++;
+            yield return new WaitForSeconds(blinkInterval);
+        }
+        cashPanelImage.color = org;
     }
     public static IEnumerator refresh()
     {
@@ -45,13 +66,14 @@ public class MoneyScript : MonoBehaviour
         if (t != 0)
         {
             yield return new WaitForSeconds(t);
-            updateCash(incomeValue, '+');
+            FindObjectOfType<MoneyScript>().updateCash(incomeValue, '+');
         }
         FindObjectOfType<MoneyScript>().resumeIncome();
     }
     void Start()
     {
-        cashPanelImage = panel.GetComponent<Image>();
+        cashPanelImage = cashPanel.GetComponent<Image>();
+        Debug.Log(cashPanelImage.color);
         changeTime = ChangeTime;
         incomeValue = IncomeValue;
         resumeIncome();   

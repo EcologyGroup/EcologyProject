@@ -32,7 +32,7 @@ public class Upgrade : MonoBehaviour
             {
                 float time = setup.upgradeTime[currentBuilding][upgradeIndex - 1];
                 int incScore = setup.upgradeScores[currentBuilding][upgradeIndex - 1];
-                MoneyScript.updateCash(upgradeCost, '-');
+                FindObjectOfType<MoneyScript>().updateCash(upgradeCost, '-');
                 StartCoroutine(setUpgrade(upgradeIndex, currentBuilding, incScore, time));
             }
             else 
