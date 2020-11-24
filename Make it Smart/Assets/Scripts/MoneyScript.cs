@@ -9,8 +9,10 @@ using UnityEngine.UI;
 
 public class MoneyScript : MonoBehaviour
 {
-    [SerializeField] private static float changeTime = 10.0f;
-    [SerializeField] private static int incomeValue = 500;
+    [SerializeField] private float ChangeTime = 10.0f;
+    [SerializeField] private int IncomeValue = 500;
+    private static float changeTime;
+    private static int incomeValue;
     private static int totalAmount;
     private static TextMeshProUGUI moneyText;
     private static IEnumerator currentCoroutine;
@@ -44,6 +46,8 @@ public class MoneyScript : MonoBehaviour
     }
     void Start()
     {
+        changeTime = ChangeTime;
+        incomeValue = IncomeValue;
         resumeIncome();   
     }
     private IEnumerator income()
