@@ -80,26 +80,20 @@ public class Upgrade : MonoBehaviour
         yield return new WaitForSeconds(time);
         score += incScore;
         //I don't think we need a switch case unless we want to give special changes for some of the upgrades ie Sprite Change etc.
-        /*
-        switch (buildingname)
+
+        switch (currentBuilding)
         {
             case "Hospital":
-                switch (i)
+                switch (upgradeIndex)
                 {
                     case 1:
-                        yield return new WaitForSeconds(5f);
-                        score += 100;
-                        Debug.Log(score);
+                        
                         break;
                     case 2:
-                        yield return new WaitForSeconds(7f);
-                        score += 200;
-                        Debug.Log(score);
+                        
                         break;
                     case 3:
-                        yield return new WaitForSeconds(10f);
-                        score += 300;
-                        Debug.Log(score);
+                        
                         break;
                     case 4:
 
@@ -114,17 +108,13 @@ public class Upgrade : MonoBehaviour
                 break;
 
             case "PoliceStation":
-                switch (i)
+                switch (upgradeIndex)
                 {
                     case 1:
-                        yield return new WaitForSeconds(10f);
-                        score += 260;
-                        Debug.Log(score);
+                        
                         break;
                     case 2:
-                        yield return new WaitForSeconds(10f);
-                        score += 350;
-                        Debug.Log(score);
+                        
                         break;
                     case 3:
 
@@ -142,7 +132,7 @@ public class Upgrade : MonoBehaviour
                 break;
 
             case "Slums":
-                switch (i)
+                switch (upgradeIndex)
                 {
                     case 1:
 
@@ -168,7 +158,7 @@ public class Upgrade : MonoBehaviour
                 }
                 break;
             case "Office":
-                switch (i)
+                switch (upgradeIndex)
                 {
                     case 1:
 
@@ -192,7 +182,7 @@ public class Upgrade : MonoBehaviour
                 }
                 break;
             case "Municpality":
-                switch (i)
+                switch (upgradeIndex)
                 {
                     case 1:
 
@@ -235,7 +225,7 @@ public class Upgrade : MonoBehaviour
                 yield return null;
                 break;
         }
-        */
+
         scoreText.text = "" + score;
     }
     public void setState(int upgradeIndex,string currentBuilding)

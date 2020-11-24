@@ -60,27 +60,47 @@ public class Setup : MonoBehaviour
             "Modernize Medical Equipment(Cost: 1000)",
             "e-Healthcare initiative(Cost: 1500)", "Organize health awareness Camps(Cost: 400)",
             "Proper Biomedical Waste Treatment(Cost: 800)" });
-
+        
         upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station(Cost: 1200)", 
             "Modernize Police Equipment(Cost: 1400)", "CCTV monitoring in City(Cost: 1750)", 
             "Eco-friendly traffic awareness mission(Cost: 450)", 
             "Digitalize police records(Cost: 500)", "Cyber security cell(Cost: 1000)" });
-        upgradeList.Add("Grid", new string[] { "Solar Field", "Electric Charging Station",
-            "Smart Grid", "Windmill" });
-        upgradeList.Add("Industry", new string[] { "Internet of Things", 
-            "Smart Supply Chain", "Waste Treatment", "Pollution Tower" });
-        upgradeList.Add("Office", new string[] { "Infrastructure", "Wireless Networks",
-            "Awareness Camps", "Training Programs",
-            "Startup Incubators", "Online Deliveries" });
-        upgradeList.Add("Municpality", new string[] { "Garbage Collection",
-            "Smart Bins", "Sewage System", "Water Treatment","Increase Tax", 
-            "Public Transport", "Intelligent transport systems", 
-            "Road Maintaince", "Transportation Stations", "Cabs",
-                                    "Public Toilets","Pollution Check"});
-        upgradeList.Add("Slums", new string[] { "Affordable Housing", "Water Supply", "Sanitation", "Electricity","Health Facilities","Roads","Welfare Schemes" });
+        
+        upgradeList.Add("Grid", new string[] { "Construct Solar Farm(Cost: 5000", "Introduce electric cars(Cost: 1800)",
+            "Smart Grid(Cost: 5000)", "Construct Windmill(Cost: 2000)" });
+       //solar farm  //windmill
+        upgradeList.Add("Industry", new string[] { "Industry 4.0 Technologies (Cost: 6000)", 
+            "Smart Supply Chain(Cost: 1500)", "Waste Treatment(Cost: 1800)", "Pollution Tower(Cost: 2000)" });
+        //pollution tower
+        upgradeList.Add("Office", new string[] { "Infrastructure Upgrades(Cost: 1000) ", "High speed Network(Cost: 1500)",
+            "Organize Tech Expo(Cost: 2000)", "Training Programs for employees(Cost: 1800)",
+            "Startup Incubators(Cost: 1300)", "Improve e-commerce(Cost: 2200)" });
+        
+        upgradeList.Add("Municpality", new string[] { "Waste Sorting at source(Cost: 1200)",
+            "Smart Bins(Cost: 2400)", "revamp Sewage System(Cost: 4000)", "Improve Water Treatment plant capacity(Cost: 3000)",
+            "Increase Tax(Cost: 500)", 
+            "Transit apps for public transportation(Cost: 1500)", "Intelligent transportation systems(Cost: 3500)", 
+            "Road Maintaince(Cost: 750)", "Maintenance of public buildings(Cost: 600)", "E-transport initiatives(Cost: 1500) ",
+                                    "Eco-toilets(Cost: 1800)",
+            "Strengthen rules for Pollution clearance of vehicles(Cost: 1400)"});
+        //waste bin color change
+        upgradeList.Add("Slums", new string[] { "Revamp Housing(Cost: 5500)", "Clean Water Supply(Cost: 1800)",
+            "Improve Sanitation Facilities(Cost: 1300)", "Provide Electricity at reasonable costs(Cost: 1500)",
+            "Provide Health Facilities(Cost: 1500)","Revamp road network(Cost: 2000)",
+            "Welfare Schemes for children(Cost: 2500)" });
+        //sprite change for slums
+
+        upgradeTime.Add("Hospital", new float[] { 30f, 11f, 13f, 8f, 14f});
+        upgradeTime.Add("PoliceStation", new float[] { 15f, 10f, 10f, 10f, 10f, 15f });
+        upgradeTime.Add("Grid", new float[] { 25f, 15f, 25f, 12f });
+        upgradeTime.Add("Industry", new float[] { 25f, 10f, 12f, 15f });
+        upgradeTime.Add("Office", new float[] { 11f, 11f, 11f, 12f, 12f, 12f });
+        upgradeTime.Add("Municpality", new float[] { 9f, 15f, 20f, 20f, 5f, 10f, 18f, 7f, 7f, 11f, 10f, 12f });
+        upgradeTime.Add("Slums", new float[] { 25f, 12f, 12f, 12f, 12f, 12f, 10f });
+
 
         //default value of Boolean is false
-        isButtonDisabled.Add("Hospital", new Boolean[6]);
+        isButtonDisabled.Add("Hospital", new Boolean[5]);
         isButtonDisabled.Add("PoliceStation", new Boolean[6]);
         isButtonDisabled.Add("Grid", new Boolean[4]);
         isButtonDisabled.Add("Industry", new Boolean[4]);
@@ -88,13 +108,13 @@ public class Setup : MonoBehaviour
         isButtonDisabled.Add("Municpality", new Boolean[12]);
         isButtonDisabled.Add("Slums", new Boolean[7]);
 
-        upgradeCost.Add("Hospital", new int[] { 2000, 2000, 2000, 2000, 2000, 2000 });
-        upgradeCost.Add("PoliceStation", new int[] { 1500, 1500, 1500, 1500, 1500, 1500 });
-        upgradeCost.Add("Grid", new int[] { 1800, 1800, 1800, 1800 });
-        upgradeCost.Add("Industry", new int[] { 2100, 2100, 2100, 2100 });
-        upgradeCost.Add("Office", new int[] { 1250, 1250, 1250, 1250, 1250, 1250 });
-        upgradeCost.Add("Municpality", new int[] { 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000 });
-        upgradeCost.Add("Slums", new int[] { 1500, 1500, 1500, 1500, 1500, 1500, 1500 });
+        upgradeCost.Add("Hospital", new int[] { 7000, 1000, 1500, 400, 800 });
+        upgradeCost.Add("PoliceStation", new int[] { 1200, 1400, 1750, 450, 500, 1000 });
+        upgradeCost.Add("Grid", new int[] { 5000, 1800, 5000, 2000 });
+        upgradeCost.Add("Industry", new int[] { 6000, 1500, 1800, 2000 });
+        upgradeCost.Add("Office", new int[] { 1000, 1500, 2000, 1800, 1300, 2200 });
+        upgradeCost.Add("Municpality", new int[] { 1200, 2400, 4000, 3000, 500, 1500, 3500, 750, 600, 1500, 1800, 1400 });
+        upgradeCost.Add("Slums", new int[] { 5500, 1800, 1300, 1500, 1500, 2000, 2500 });
 
         upgradeSprite.Add("PoliceStation",psUpgradeButtons);
         upgradeSprite.Add("Hospital",hospUpgradeButtons);
@@ -104,20 +124,14 @@ public class Setup : MonoBehaviour
         upgradeSprite.Add("Municpality", MunicipalityUpgradeButtons);
         upgradeSprite.Add("Slums", slumsUpgradeButtons);
 
-        upgradeScores.Add("Hospital", new int[] { 100, 100, 100, 100, 100, 100 });
-        upgradeScores.Add("PoliceStation", new int[] { 90, 90, 90, 90, 90, 90 });
-        upgradeScores.Add("Grid", new int[] { 110, 110, 110, 110 });
-        upgradeScores.Add("Industry", new int[] { 100, 100, 100, 100 });
-        upgradeScores.Add("Office", new int[] { 80, 80, 80, 80, 80, 80 });
-        upgradeScores.Add("Municpality", new int[] { 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150 });
-        upgradeScores.Add("Slums", new int[] { 120, 120, 120, 120, 120, 120, 120 });
+        upgradeScores.Add("Hospital", new int[] { 700, 100, 150, 50, 75 });
+        upgradeScores.Add("PoliceStation", new int[] { 125, 150, 175, 50, 50, 100 });
+        upgradeScores.Add("Grid", new int[] { 500, 150, 500, 200 });
+        upgradeScores.Add("Industry", new int[] { 550, 125, 150, 150 });
+        upgradeScores.Add("Office", new int[] { 150, 100, 200, 100, 100, 150 });
+        upgradeScores.Add("Municpality", new int[] { 100, 200, 450, 250, 0, 100, 350, 75, 75, 100, 150, 150 });
+        upgradeScores.Add("Slums", new int[] { 550, 200, 150, 125, 150, 125, 200 });
 
-        upgradeTime.Add("Hospital", new float[] { 5f, 6f, 7f, 8f, 9f, 10f });
-        upgradeTime.Add("PoliceStation", new float[] { 5f, 6f, 7f, 8f, 9f, 10f });
-        upgradeTime.Add("Grid", new float[] { 5f, 6f, 7f, 8f });
-        upgradeTime.Add("Industry", new float[] { 5f, 6f, 7f, 8f });
-        upgradeTime.Add("Office", new float[] { 5f, 6f, 7f, 8f, 9f, 10f });
-        upgradeTime.Add("Municpality", new float[] { 5f, 6f, 7f, 8f, 9f, 10f, 5f, 6f, 7f, 8f, 9f, 10f });
-        upgradeTime.Add("Slums", new float[] { 5f, 6f, 7f, 8f, 9f, 10f, 5f });
+        
     }
 }
