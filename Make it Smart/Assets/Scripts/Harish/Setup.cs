@@ -56,12 +56,25 @@ public class Setup : MonoBehaviour
         sprite.Add("Slums", slumsUpgrade);
 
         //Add Upgrades for remaining Buildings similarly
-        upgradeList.Add("Hospital", new string[] { "Super Specialty Upgrade", "Modernize Medical Equipment", "eHealthcare", "Awareness Camps", "Biomedical Waste Treatment", "Accidents" });
-        upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station", "Modernize Equipment", "Public Safety", "Awareness Camps", "Digitalize Police Data", "Cyber Security" });
-        upgradeList.Add("Grid", new string[] { "Solar Field", "Electric Charging Station", "Smart Grid", "Windmill" });
-        upgradeList.Add("Industry", new string[] { "Internet of Things", "Smart Supply Chain", "Waste Treatment", "Pollution Tower" });
-        upgradeList.Add("Office", new string[] { "Infrastructure", "Wireless Networks", "Awareness Camps", "Training Programs", "Startup Incubators", "Online Deliveries" });
-        upgradeList.Add("Municpality", new string[] { "Garbage Collection", "Smart Bins", "Sewage System", "Water Treatment","Increase Tax", "Public Transport", "Intelligent transport systems", "Road Maintaince", "Transportation Stations", "Cabs",
+        upgradeList.Add("Hospital", new string[] { "Super Specialty Upgrade", 
+            "Modernize Medical Equipment",
+            "eHealthcare", "Awareness Camps",
+            "Biomedical Waste Treatment", "Accidents" });
+
+        upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station", 
+            "Modernize Equipment", "Public Safety", "Awareness Camps", 
+            "Digitalize Police Data", "Cyber Security" });
+        upgradeList.Add("Grid", new string[] { "Solar Field", "Electric Charging Station",
+            "Smart Grid", "Windmill" });
+        upgradeList.Add("Industry", new string[] { "Internet of Things", 
+            "Smart Supply Chain", "Waste Treatment", "Pollution Tower" });
+        upgradeList.Add("Office", new string[] { "Infrastructure", "Wireless Networks",
+            "Awareness Camps", "Training Programs",
+            "Startup Incubators", "Online Deliveries" });
+        upgradeList.Add("Municpality", new string[] { "Garbage Collection",
+            "Smart Bins", "Sewage System", "Water Treatment","Increase Tax", 
+            "Public Transport", "Intelligent transport systems", 
+            "Road Maintaince", "Transportation Stations", "Cabs",
                                     "Public Toilets","Pollution Check"});
         upgradeList.Add("Slums", new string[] { "Affordable Housing", "Water Supply", "Sanitation", "Electricity","Health Facilities","Roads","Welfare Schemes" });
 
