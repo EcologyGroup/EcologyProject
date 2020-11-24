@@ -16,7 +16,8 @@ public class MoneyScript : MonoBehaviour
     private static int incomeValue;
     private static int totalAmount;
     private static TextMeshProUGUI moneyText;
-    private Image cashPanelImage;
+    private static Image cashPanelImage;
+    private static Color org;
     private IEnumerator currentCoroutine;
     
     public static Boolean checkCash(int amt)
@@ -47,7 +48,7 @@ public class MoneyScript : MonoBehaviour
     private IEnumerator colorBlink(float blinkTime, float blinkInterval, Color blinkColor)
     {
         float startTime = Time.time;
-        Color org = cashPanelImage.color;
+        cashPanelImage.color = org;
         int c = 0;
         while (Time.time - startTime <= blinkTime)
         {
@@ -62,6 +63,7 @@ public class MoneyScript : MonoBehaviour
     }
     public static IEnumerator refresh()
     {
+        cashPanelImage.color = org;
         float t = Timer.timeRemaining % changeTime;
         if (t != 0)
         {
@@ -73,6 +75,7 @@ public class MoneyScript : MonoBehaviour
     void Start()
     {
         cashPanelImage = cashPanel.GetComponent<Image>();
+        org = cashPanelImage.color;
         Debug.Log(cashPanelImage.color);
         changeTime = ChangeTime;
         incomeValue = IncomeValue;
