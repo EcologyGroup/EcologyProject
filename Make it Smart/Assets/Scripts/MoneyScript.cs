@@ -11,7 +11,7 @@ public class MoneyScript : MonoBehaviour
 {
     [SerializeField] private GameObject cashPanel;
     [SerializeField] private float ChangeTime = 8f;
-    [SerializeField] private int IncomeValue = 2800;
+    [SerializeField] private int IncomeValue = 850;
     private static float changeTime;
     private static int incomeValue;
     private static int totalAmount;
