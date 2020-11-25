@@ -95,7 +95,7 @@ public class Upgrade : MonoBehaviour
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, sprite.color.a + Time.deltaTime / fadeTime);
             yield return null;
         }
-        DisplayMessage("Hurray " + buildingName + " has been Constructed");
+        DisplayMessage("Hurray " + buildingName + " has been Constructed!!");
     }
     private IEnumerator setUpgrade(int upgradeIndex, string currentBuilding, int incScore, float time)//paramaters upgradeIndex and currentBuilding in case we need it later
     {
@@ -162,6 +162,7 @@ public class Upgrade : MonoBehaviour
                     case 1:
                         Slum1.GetComponent<SpriteRenderer>().sprite=Slums;
                         Slum2.GetComponent<SpriteRenderer>().sprite = Slums;
+                        DisplayMessage("Slum Houses have had a major Revamp. Looks very refreshing now!!");
                         break;
                     case 2:
 
