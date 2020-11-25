@@ -37,8 +37,6 @@ public class Upgrade : MonoBehaviour
             }
             else 
             {
-                //take reference of a panel close to the Cash field and display something : "Insufficient Cash"
-                //Debug.Log("Insufficient Cash");
                 if (currentCoroutine != null)
                     StopCoroutine(currentCoroutine);
                 currentCoroutine = DebugMessage("Insufficient Cash");
@@ -57,10 +55,10 @@ public class Upgrade : MonoBehaviour
         float fadeTime = 1.5f;
         int padding = 4;
         CanvasGroup panel=DebugMessagePanel.gameObject.GetComponent<CanvasGroup>();
-        panel.alpha = 1;
         TextMeshProUGUI message = DebugMessagePanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         message.text = msg;
         DebugMessagePanel.GetComponent<RectTransform>().sizeDelta = new Vector2(message.preferredWidth + padding * 2f, message.preferredHeight + padding * 2f);
+        panel.alpha = 1;
         DebugMessagePanel.SetActive(true);
         yield return new WaitForSeconds(fadeTime);
         while (panel.alpha > 0) 
@@ -69,7 +67,6 @@ public class Upgrade : MonoBehaviour
             yield return null;
         }
         DebugMessagePanel.SetActive(false);
-        panel.alpha = 1;
     }
     private IEnumerator setUpgrade(int upgradeIndex, string currentBuilding, int incScore, float time)//paramaters upgradeIndex and currentBuilding in case we need it later
     {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEditor.UIElements;
@@ -17,6 +18,7 @@ public class rayCast : MonoBehaviour
     private Setup setup;
     private Boolean isPanelActive;
     private string currentBuilding;
+    private IEnumerator currentCoroutine;
 
     [SerializeField] float padding = 8f;
     private GameObject popup;
@@ -69,15 +71,43 @@ public class rayCast : MonoBehaviour
                 }
                 else
                     isPanelActive = false;
+                if (isPanelActive)
+                {
+                    if (currentCoroutine != null)
+                        StopCoroutine(currentCoroutine);
+                    currentCoroutine = displayPanel('+');
+                    StartCoroutine(currentCoroutine);
+                }
+                else
+                {
+                    if (currentCoroutine != null)
+                        StopCoroutine(currentCoroutine);
+                    currentCoroutine = displayPanel('-');
+                    StartCoroutine(currentCoroutine);
 
-            }
-            if (isPanelActive)
-                displayPanel(currentBuilding);
-            else
-                upgradePanelCanvas.SetActive(isPanelActive);
+                }
+            }        
         }
         else
             upgradePanelCanvas.SetActive(false);
+    }
+    private IEnumerator displayPanel(char c)
+    {
+        float displayTime = 10f;
+        float fadeTime = 0.8f;
+        CanvasGroup panel = upgradePanelCanvas.GetComponent<CanvasGroup>();
+        panel.alpha = 1;
+        if (c == '+')
+        {
+            setPanel(currentBuilding);
+            yield return new WaitForSeconds(displayTime);
+        }
+        while (panel.alpha > 0)
+        {
+            panel.alpha -= Time.deltaTime / fadeTime;
+            yield return null;
+        }
+        upgradePanelCanvas.SetActive(false);
     }
     public static void refreshPanel()
     {
@@ -101,7 +131,7 @@ public class rayCast : MonoBehaviour
                 upgradeImage.color = new Color(1, 1, 1, 1f);
         }
     }
-    private void displayPanel(string buildingname)
+    private void setPanel(string buildingname)
     {
         this.buildingname.text = buildingname;
         panelSprite.sprite = upgradeSprite;
