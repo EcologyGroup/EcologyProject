@@ -137,7 +137,7 @@ public class rayCast : MonoBehaviour
         panelSprite.sprite = upgradeSprite;
         upgradePanelCanvas.SetActive(true);   
     }
-    private void upgrade(int index)
+    public void upgrade(int index)
     {
         if (!setup.isButtonDisabled[currentBuilding][index - 1])
             FindObjectOfType<Upgrade>().setState(index, currentBuilding);
