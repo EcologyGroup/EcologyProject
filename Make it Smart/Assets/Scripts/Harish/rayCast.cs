@@ -164,6 +164,7 @@ public class rayCast : MonoBehaviour
         }
         Vector2 preferredSize = new Vector2(popupText.preferredWidth + padding * 2f, popupText.preferredHeight + padding * 2f);
         Vector2 anchorPos = new Vector2(0, preferredSize.y / 2f);
+        popupTransform.sizeDelta = Vector2.zero;
         popupTransform.sizeDelta = preferredSize;
         popupTransform.anchoredPosition = anchorPos;
         popup.SetActive(true);

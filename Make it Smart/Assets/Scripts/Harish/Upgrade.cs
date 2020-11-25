@@ -72,7 +72,10 @@ public class Upgrade : MonoBehaviour
         CanvasGroup panel=DebugMessagePanel.gameObject.GetComponent<CanvasGroup>();
         TextMeshProUGUI message = DebugMessagePanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         message.text = msg;
-        DebugMessagePanel.GetComponent<RectTransform>().sizeDelta = new Vector2(message.preferredWidth + padding * 2f, message.preferredHeight + padding * 2f);
+        RectTransform panelTransform = DebugMessagePanel.GetComponent<RectTransform>();
+        panelTransform.sizeDelta = Vector2.zero;
+        panelTransform.sizeDelta = new Vector2(message.preferredWidth + padding * 2f, message.preferredHeight + padding * 2f);
+        panelTransform.anchoredPosition = new Vector2(-200f + panelTransform.sizeDelta.x / 2, panelTransform.anchoredPosition.y);
         panel.alpha = 1;
         DebugMessagePanel.SetActive(true);
         yield return new WaitForSeconds(fadeTime);
