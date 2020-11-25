@@ -14,6 +14,9 @@ public class Upgrade : MonoBehaviour
     private Setup setup;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject DebugMessagePanel;
+    [SerializeField] private GameObject Slum1;
+    [SerializeField] private GameObject Slum2;
+    [SerializeField] private Sprite Slums;
     private IEnumerator currentCoroutine;
     private Dictionary<string, GameObject> toggleObjects;//to turn them on or off
     void Start()
@@ -143,7 +146,8 @@ public class Upgrade : MonoBehaviour
                 switch (upgradeIndex)
                 {
                     case 1:
-
+                        Slum1.GetComponent<SpriteRenderer>().sprite=Slums;
+                        Slum2.GetComponent<SpriteRenderer>().sprite = Slums;
                         break;
                     case 2:
 
@@ -236,11 +240,11 @@ public class Upgrade : MonoBehaviour
                     switch (upgradeIndex)
                     {
                         case 1:toggleObjects["Solar Farm"].SetActive(true);
-                            DisplayMessage("Congratulations Solar Farm has been Constructed");
+                            DisplayMessage("Congratulations!! Solar Farm has been Constructed");
                             break;
 
                         case 4:toggleObjects["Windmill"].SetActive(true);
-                            DisplayMessage("Hurray Windmill has been Constructed");
+                            DisplayMessage("Hurray!! Windmill has been Constructed");
                             break;
                     }
                 }
