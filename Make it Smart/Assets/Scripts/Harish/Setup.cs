@@ -66,7 +66,7 @@ public class Setup : MonoBehaviour
             "Eco-friendly Traffic Awareness Mission(Cost: 450)", 
             "Digitalize Police Records(Cost: 500)", "Cyber Security Cell(Cost: 1000)" });
         
-        upgradeList.Add("Grid", new string[] { "Construct Solar Farm(Cost: 5000", "Introduce Electric Cars(Cost: 1800)",
+        upgradeList.Add("Grid", new string[] { "Construct Solar Farm(Cost: 5000)", "Introduce Electric Cars(Cost: 1800)",
             "Smart Grid(Cost: 5000)", "Construct Windmill(Cost: 2000)" });
        //solar farm  //windmill
         upgradeList.Add("Industry", new string[] { "Industry 4.0 Technologies (Cost: 6000)", 

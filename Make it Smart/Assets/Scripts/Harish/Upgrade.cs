@@ -15,8 +15,10 @@ public class Upgrade : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject DebugMessagePanel;
     private IEnumerator currentCoroutine;
+    private Dictionary<string, GameObject> toggleObjects;//to turn them on or off
     void Start()
     {
+        setupToggle();
         score = 0;
         upgradeIndex = 0;
         currentBuilding = null;
@@ -35,15 +37,25 @@ public class Upgrade : MonoBehaviour
                 FindObjectOfType<MoneyScript>().updateCash(upgradeCost, '-');
                 StartCoroutine(setUpgrade(upgradeIndex, currentBuilding, incScore, time));
             }
-            else 
-            {
-                if (currentCoroutine != null)
-                    StopCoroutine(currentCoroutine);
-                currentCoroutine = DebugMessage("Insufficient Cash");
-                StartCoroutine(currentCoroutine);
-            }
+            else
+                DisplayMessage("Insufficient Cash");
         }
         currentBuilding = null;
+    }
+    private void setupToggle()
+    {
+        toggleObjects = new Dictionary<string, GameObject>();
+        toggleObjects.Add("Windmill", GameObject.Find("Building Objects/Windmill"));
+        toggleObjects.Add("Solar Farm", GameObject.Find("Building Objects/Solar Farm"));
+        foreach (GameObject building in toggleObjects.Values)
+            building.SetActive(false);
+    }
+    private void DisplayMessage(string msg)
+    {
+        if (currentCoroutine != null)
+            StopCoroutine(currentCoroutine);
+        currentCoroutine = DebugMessage(msg);
+        StartCoroutine(currentCoroutine);
     }
     private void disableButton(string currentBuilding, int upgradeIndex)
     {
@@ -77,7 +89,6 @@ public class Upgrade : MonoBehaviour
         yield return new WaitForSeconds(time);
         score += incScore;
         //I don't think we need a switch case unless we want to give special changes for some of the upgrades ie Sprite Change etc.
-
         switch (currentBuilding)
         {
             case "Hospital":
@@ -219,7 +230,20 @@ public class Upgrade : MonoBehaviour
                         break;
 
                 }
-                yield return null;
+                break;
+            case "Grid":
+                {
+                    switch (upgradeIndex)
+                    {
+                        case 1:toggleObjects["Solar Farm"].SetActive(true);
+                            DisplayMessage("Congratulations Solar Farm has been Constructed");
+                            break;
+
+                        case 4:toggleObjects["Windmill"].SetActive(true);
+                            DisplayMessage("Hurray Windmill has been Constructed");
+                            break;
+                    }
+                }
                 break;
         }
 

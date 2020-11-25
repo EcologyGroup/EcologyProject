@@ -6,13 +6,15 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public static float timeRemaining = 600;
+    [SerializeField] private float gameTime = 600;
+    public static float timeRemaining;
     bool timerIsRunning = false;
     public TextMeshProUGUI timeText;
     public GameObject ResultPanel;
 
     void Start()
     {
+        timeRemaining = gameTime;
         timeText = gameObject.GetComponent<TextMeshProUGUI>();
         timerIsRunning = true;
     }
