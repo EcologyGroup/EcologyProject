@@ -56,38 +56,38 @@ public class Setup : MonoBehaviour
         sprite.Add("Slums", slumsUpgrade);
 
         //Add Upgrades for remaining Buildings similarly
-        upgradeList.Add("Hospital", new string[] { "Multi Super-Specialty hospital(Cost: 7000)", 
+        upgradeList.Add("Hospital", new string[] { "Multi Super-Specialty Hospital(Cost: 7000)", 
             "Modernize Medical Equipment(Cost: 1000)",
-            "e-Healthcare initiative(Cost: 1500)", "Organize health awareness Camps(Cost: 400)",
+            "e-Healthcare Initiative(Cost: 1500)", "Organize Health Awareness Camps(Cost: 400)",
             "Proper Biomedical Waste Treatment(Cost: 800)" });
         
         upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station(Cost: 1200)", 
-            "Modernize Police Equipment(Cost: 1400)", "CCTV monitoring in City(Cost: 1750)", 
-            "Eco-friendly traffic awareness mission(Cost: 450)", 
-            "Digitalize police records(Cost: 500)", "Cyber security cell(Cost: 1000)" });
+            "Modernize Police Equipment(Cost: 1400)", "CCTV Monitoring in City(Cost: 1750)", 
+            "Eco-friendly Traffic Awareness Mission(Cost: 450)", 
+            "Digitalize Police Records(Cost: 500)", "Cyber Security Cell(Cost: 1000)" });
         
-        upgradeList.Add("Grid", new string[] { "Construct Solar Farm(Cost: 5000", "Introduce electric cars(Cost: 1800)",
+        upgradeList.Add("Grid", new string[] { "Construct Solar Farm(Cost: 5000", "Introduce Electric Cars(Cost: 1800)",
             "Smart Grid(Cost: 5000)", "Construct Windmill(Cost: 2000)" });
        //solar farm  //windmill
         upgradeList.Add("Industry", new string[] { "Industry 4.0 Technologies (Cost: 6000)", 
             "Smart Supply Chain(Cost: 1500)", "Waste Treatment(Cost: 1800)", "Pollution Tower(Cost: 2000)" });
         //pollution tower
-        upgradeList.Add("Office", new string[] { "Infrastructure Upgrades(Cost: 1000) ", "High speed Network(Cost: 1500)",
-            "Organize Tech Expo(Cost: 2000)", "Training Programs for employees(Cost: 1800)",
-            "Startup Incubators(Cost: 1300)", "Improve e-commerce(Cost: 2200)" });
+        upgradeList.Add("Office", new string[] { "Infrastructure Upgrades(Cost: 1000) ", "High Speed Network(Cost: 1500)",
+            "Organize Tech Expo(Cost: 2000)", "Training Programs for Employees(Cost: 1800)",
+            "Startup Incubators(Cost: 1300)", "Improve e-Commerce(Cost: 2200)" });
         
-        upgradeList.Add("Municpality", new string[] { "Waste Sorting at source(Cost: 1200)",
-            "Smart Bins(Cost: 2400)", "revamp Sewage System(Cost: 4000)", "Improve Water Treatment plant capacity(Cost: 3000)",
+        upgradeList.Add("Municpality", new string[] { "Waste Sorting at Source(Cost: 1200)",
+            "Smart Bins(Cost: 2400)", "Revamp Sewage System(Cost: 4000)", "Improve Water Treatment Plant Capacity(Cost: 3000)",
             "Increase Tax(Cost: 500)", 
-            "Transit apps for public transportation(Cost: 1500)", "Intelligent transportation systems(Cost: 3500)", 
-            "Road Maintaince(Cost: 750)", "Maintenance of public buildings(Cost: 600)", "E-transport initiatives(Cost: 1500) ",
-                                    "Eco-toilets(Cost: 1800)",
-            "Strengthen rules for Pollution clearance of vehicles(Cost: 1400)"});
+            "Transit Apps for Public Transportation(Cost: 1500)", "Intelligent Transportation Systems(Cost: 3500)", 
+            "Road Maintaince(Cost: 750)", "Maintenance of Public Buildings(Cost: 600)", "E-Transport Initiatives(Cost: 1500) ",
+                                    "Eco-Toilets(Cost: 1800)",
+            "Strengthen rules for Pollution Clearance of Vehicles(Cost: 1400)"});
         //waste bin color change
         upgradeList.Add("Slums", new string[] { "Revamp Housing(Cost: 5500)", "Clean Water Supply(Cost: 1800)",
-            "Improve Sanitation Facilities(Cost: 1300)", "Provide Electricity at reasonable costs(Cost: 1500)",
-            "Provide Health Facilities(Cost: 1500)","Revamp road network(Cost: 2000)",
-            "Welfare Schemes for children(Cost: 2500)" });
+            "Improve Sanitation Facilities(Cost: 1300)", "Provide Electricity at Reasonable Costs(Cost: 1500)",
+            "Provide Health Facilities(Cost: 1500)","Revamp Road Network(Cost: 2000)",
+            "Welfare Schemes for Children(Cost: 2500)" });
         //sprite change for slums
 
         upgradeTime.Add("Hospital", new float[] { 30f, 11f, 13f, 8f, 14f});

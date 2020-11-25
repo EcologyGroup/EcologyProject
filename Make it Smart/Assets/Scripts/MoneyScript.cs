@@ -76,7 +76,6 @@ public class MoneyScript : MonoBehaviour
     {
         cashPanelImage = cashPanel.GetComponent<Image>();
         org = cashPanelImage.color;
-        Debug.Log(cashPanelImage.color);
         changeTime = ChangeTime;
         incomeValue = IncomeValue;
         resumeIncome();   
