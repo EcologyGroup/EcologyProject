@@ -83,6 +83,20 @@ public class Upgrade : MonoBehaviour
         }
         DebugMessagePanel.SetActive(false);
     }
+    private IEnumerator constructBuilding(string buildingName)
+    {
+        float fadeTime = 1f;
+        GameObject buildingObject = toggleObjects[buildingName];
+        SpriteRenderer sprite = buildingObject.GetComponent<SpriteRenderer>();
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
+        buildingObject.SetActive(true);
+        while (sprite.color.a <= 1)
+        {
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, sprite.color.a + Time.deltaTime / fadeTime);
+            yield return null;
+        }
+        DisplayMessage("Hurray " + buildingName + " has been Constructed");
+    }
     private IEnumerator setUpgrade(int upgradeIndex, string currentBuilding, int incScore, float time)//paramaters upgradeIndex and currentBuilding in case we need it later
     {
         Debug.Log("Upgrade Number :" + upgradeIndex + " of " + currentBuilding);
@@ -239,12 +253,10 @@ public class Upgrade : MonoBehaviour
                 {
                     switch (upgradeIndex)
                     {
-                        case 1:toggleObjects["Solar Farm"].SetActive(true);
-                            DisplayMessage("Congratulations!! Solar Farm has been Constructed");
+                        case 1: StartCoroutine(constructBuilding("Solar Farm"));
                             break;
 
-                        case 4:toggleObjects["Windmill"].SetActive(true);
-                            DisplayMessage("Hurray!! Windmill has been Constructed");
+                        case 4:StartCoroutine(constructBuilding("Windmill"));
                             break;
                     }
                 }
