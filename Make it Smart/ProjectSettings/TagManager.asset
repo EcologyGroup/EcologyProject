@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Building
   - UpgradeCanvas
+  - Interactable
   layers:
   - Default
   - TransparentFX

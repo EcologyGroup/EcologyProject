@@ -47,7 +47,12 @@ public class rayCast : MonoBehaviour
                 RaycastHit2D hitInfo = Physics2D.Raycast(ray.origin, ray.direction);
                 if (hitInfo)
                 {
-                    if (hitInfo.collider.CompareTag("UpgradeCanvas") && isPanelActive) 
+                    if (hitInfo.collider.CompareTag("Interactable") && hitInfo.transform.gameObject.GetComponent<SpriteRenderer>().color.a == 1)  
+                    {
+                        StartCoroutine(hitInfo.transform.gameObject.GetComponent<Interactables>().OnClick());
+                        isPanelActive = false;
+                    }
+                    else if (hitInfo.collider.CompareTag("UpgradeCanvas") && isPanelActive)
                     {
                         isPanelActive = true;
                     }
@@ -84,7 +89,6 @@ public class rayCast : MonoBehaviour
                         StopCoroutine(currentCoroutine);
                     currentCoroutine = displayPanel('-');
                     StartCoroutine(currentCoroutine);
-
                 }
             }        
         }
