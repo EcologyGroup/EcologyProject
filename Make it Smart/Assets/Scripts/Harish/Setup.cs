@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Setup : MonoBehaviour
 {
-    [SerializeField] private Transform[] Buildings;
+    [SerializeField] public Transform[] Buildings;
     [SerializeField] private Sprite psUpgrade;
     [SerializeField] private Sprite hospUpgrade;
     [SerializeField] private Sprite gridUpgrade;

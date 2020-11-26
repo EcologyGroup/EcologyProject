@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -8,6 +9,8 @@ using UnityEngine.UIElements;
 
 public class Upgrade : MonoBehaviour
 {
+    [SerializeField] private GameObject UpgradeAnimationPrefab;
+    [SerializeField] private GameObject UpgradeAnimations;
     private static int score;
     private int upgradeIndex;
     private string currentBuilding;
@@ -65,9 +68,21 @@ public class Upgrade : MonoBehaviour
         setup.isButtonDisabled[currentBuilding][upgradeIndex - 1] = true;
         rayCast.refreshPanel();
     }
+    private void playAnimation(string currentBuilding)
+    {
+        foreach (Transform building in setup.Buildings)
+        {
+            if (building.gameObject.name == currentBuilding)
+            {
+                GameObject animator = Instantiate(UpgradeAnimationPrefab, building.position, Quaternion.identity);
+                animator.transform.parent = UpgradeAnimations.transform;
+                StartCoroutine(animator.GetComponent<InvokeAnimation>().playAnimation());
+            }
+        }
+    }
     private IEnumerator DebugMessage(string msg)
     {
-        float fadeTime = 1.5f;
+        float fadeTime = 2f;
         int padding = 4;
         CanvasGroup panel=DebugMessagePanel.gameObject.GetComponent<CanvasGroup>();
         TextMeshProUGUI message = DebugMessagePanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -107,6 +122,8 @@ public class Upgrade : MonoBehaviour
         //Locked all upgrades after clicking button (Please change accordingly, using switch case below) 
         disableButton(currentBuilding, upgradeIndex);
         yield return new WaitForSeconds(time);
+        DisplayMessage("Upgrade Done " + setup.upgradeList[currentBuilding][upgradeIndex - 1]);
+        playAnimation(currentBuilding);
         score += incScore;
         //I don't think we need a switch case unless we want to give special changes for some of the upgrades ie Sprite Change etc.
         switch (currentBuilding)
