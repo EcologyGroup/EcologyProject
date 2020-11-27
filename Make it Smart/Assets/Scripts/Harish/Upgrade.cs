@@ -11,7 +11,7 @@ public class Upgrade : MonoBehaviour
 {
     [SerializeField] private GameObject UpgradeAnimationPrefab;
     [SerializeField] private GameObject UpgradeAnimations;
-    private static int score;
+    public static int score;
     private int upgradeIndex;
     private string currentBuilding;
     private Setup setup;
