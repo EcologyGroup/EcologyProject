@@ -57,7 +57,7 @@ public class Upgrade : MonoBehaviour
         foreach (GameObject building in toggleObjects.Values)
             building.SetActive(false);
     }
-    private void DisplayMessage(string msg)
+    public void DisplayMessage(string msg)
     {
         if (currentCoroutine != null)
             StopCoroutine(currentCoroutine);
@@ -284,7 +284,6 @@ public class Upgrade : MonoBehaviour
                 }
                 break;
         }
-
         scoreText.text = "" + score;
     }
     public void setState(int upgradeIndex,string currentBuilding)

@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Interactables : MonoBehaviour
 {
-    [SerializeField] private Sprite[] interactiveIcons;
+    [SerializeField] private Sprite[] interactiveIcons;//0 - Crime 1 - Accident/Medical 2 - Repair
     [SerializeField] private float visibleTime = 40f;
     [SerializeField] AudioSource btnclick;
     private Setup setup;
-    private int index;
+    private int buildingIndex;
+    private int iconIndex;
     private IEnumerator currentCoroutine;
     private IEnumerator masterCoroutine;
 
     void Start()
     {
-        //btnclick = GetComponent<AudioSource>();
         setup = FindObjectOfType<Setup>();
         masterCoroutine = initiate();
         StartCoroutine(masterCoroutine);
@@ -35,9 +35,10 @@ public class Interactables : MonoBehaviour
     }
     private IEnumerator toggleIcon()
     {
-        index = Random.Range(0, setup.Buildings.Length);
-        gameObject.transform.position = new Vector3(setup.Buildings[index].position.x, setup.Buildings[index].position.y, -4f);
-        gameObject.GetComponent<SpriteRenderer>().sprite = interactiveIcons[Random.Range(0, interactiveIcons.Length)];
+        buildingIndex = Random.Range(0, setup.Buildings.Length);
+        gameObject.transform.position = new Vector3(setup.Buildings[buildingIndex].position.x, setup.Buildings[buildingIndex].position.y, -4f);
+        iconIndex = Random.Range(0, interactiveIcons.Length);
+        gameObject.GetComponent<SpriteRenderer>().sprite = interactiveIcons[iconIndex];
         yield return StartCoroutine(fade('+', 1f));
         yield return new WaitForSeconds(visibleTime);
         yield return StartCoroutine(fade('-', 1f));
@@ -57,6 +58,14 @@ public class Interactables : MonoBehaviour
         if (masterCoroutine != null)
             StopCoroutine(masterCoroutine);
         Upgrade.score += 50;
+        string msg = "";
+        if (iconIndex == 0)
+            msg = "Crime Scene Reported!!";
+        else if (iconIndex == 1)
+            msg = "Medical Emergency... Patients have reached the Hospital safely\nThe patients are doing well now";
+        else if (iconIndex == 2)
+            msg = "Repairs Done!!";
+        FindObjectOfType<Upgrade>().DisplayMessage(msg);
         btnclick.Play();
         yield return StartCoroutine(fade('-', 1f));
         masterCoroutine = initiate();

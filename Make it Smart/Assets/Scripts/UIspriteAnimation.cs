@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
-//[RequireComponent(typeof(Image))]
 public class UIspriteAnimation : MonoBehaviour
 {
     public float duration;
-    private bool start=false;
+    private bool start;
     [SerializeField] private Sprite[] sprites;
 
     private Image image;
@@ -15,9 +13,10 @@ public class UIspriteAnimation : MonoBehaviour
 
     void Start()
     {
+        start = false;
         image = GetComponent<Image>();
     }
-    private void Update()
+    void Update()
     {
         if (start)
         {
@@ -27,10 +26,8 @@ public class UIspriteAnimation : MonoBehaviour
                 image.sprite = sprites[index];
                 index = (index + 1) % sprites.Length;
             }
-           
         }
     }
-   
     void OnEnable()
     {
         start = true;
