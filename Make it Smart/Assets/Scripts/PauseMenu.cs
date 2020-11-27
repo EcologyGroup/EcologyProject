@@ -40,7 +40,7 @@ public class PauseMenu : MonoBehaviour
         for (int i = 0; i < 3; i++)
             panels[i].SetActive(true);
         Time.timeScale = 1f;
-        StartCoroutine(MoneyScript.refresh());
+        StartCoroutine(FindObjectOfType<MoneyScript>().refresh());
     }
 
     public void Pause(){
