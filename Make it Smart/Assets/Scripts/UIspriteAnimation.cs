@@ -4,7 +4,7 @@ using System.Collections;
 public class UIspriteAnimation : MonoBehaviour
 {
     public float duration;
-    private bool start=false;
+    private bool start = false;
     [SerializeField] private Sprite[] sprites;
 
     private Image image;
@@ -13,7 +13,7 @@ public class UIspriteAnimation : MonoBehaviour
 
     void Start()
     {
-        
+        start = true;
         image = GetComponent<Image>();
     }
     void Update()
@@ -27,9 +27,5 @@ public class UIspriteAnimation : MonoBehaviour
                 index = (index + 1) % sprites.Length;
             }
         }
-    }
-    void OnEnable()
-    {
-        start = true;
     }
 }

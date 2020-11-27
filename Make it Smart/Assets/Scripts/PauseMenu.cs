@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     private static Boolean gameIsPaused;
+    private static Boolean isGameOver;
     [SerializeField] GameObject[] panels;//when game is paused
     //0th Index-Upgrade Description Button
     //1st Index-Pause Button
@@ -16,16 +17,20 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         gameIsPaused = false;
+        isGameOver = false;
         panels[panels.Length - 1].SetActive(gameIsPaused);
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!isGameOver)
         {
-            if (gameIsPaused)
-                Resume();
-            else
-                Pause();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (gameIsPaused)
+                    Resume();
+                else if (!gameIsPaused) 
+                    Pause();
+            }
         }
     }
 
@@ -55,7 +60,8 @@ public class PauseMenu : MonoBehaviour
     {
         return gameIsPaused;
     }
-
-    
-
+    public void GameOver(bool flag)
+    {
+        isGameOver = flag;
+    }
 }

@@ -12,7 +12,6 @@ public class Interactables : MonoBehaviour
     private int iconIndex;
     private IEnumerator currentCoroutine;
     private IEnumerator masterCoroutine;
-
     void Start()
     {
         setup = FindObjectOfType<Setup>();
