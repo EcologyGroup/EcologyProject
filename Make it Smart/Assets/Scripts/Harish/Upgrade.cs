@@ -11,6 +11,7 @@ public class Upgrade : MonoBehaviour
 {
     [SerializeField] private GameObject UpgradeAnimationPrefab;
     [SerializeField] private GameObject UpgradeAnimations;
+    [SerializeField] private AudioSource upgradeSound;
     public static int score;
     private int upgradeIndex;
     private string currentBuilding;
@@ -129,6 +130,7 @@ public class Upgrade : MonoBehaviour
         DisplayMessage("Upgrade Done " + setup.upgradeList[currentBuilding][upgradeIndex - 1]);
         playAnimation(currentBuilding);
         score += incScore;
+        upgradeSound.Play();
         //I don't think we need a switch case unless we want to give special changes for some of the upgrades ie Sprite Change etc.
         switch (currentBuilding)
         {

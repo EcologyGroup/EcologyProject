@@ -12,6 +12,7 @@ public class MoneyScript : MonoBehaviour
     [SerializeField] private GameObject cashPanel;
     [SerializeField] private float ChangeTime = 8f;
     [SerializeField] public int IncomeValue = 2800;
+    [SerializeField] private AudioSource cashSound;
     private static float changeTime;
     private static int incomeValue;
     private static int extra=0;
@@ -31,6 +32,7 @@ public class MoneyScript : MonoBehaviour
         if (c == '+') totalAmount += amt;
         else if (c == '-') totalAmount -= amt;
         moneyText.text = "" + totalAmount;
+        cashSound.Play();
         Color clr;
         if (c == '+')
             clr = Color.green;
@@ -92,6 +94,7 @@ public class MoneyScript : MonoBehaviour
         {
             yield return new WaitForSeconds(changeTime);
             updateCash(incomeValue, '+');
+            
         }
     }
 
