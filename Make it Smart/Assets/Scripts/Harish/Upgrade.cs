@@ -13,11 +13,13 @@ public class Upgrade : MonoBehaviour
     [SerializeField] private GameObject UpgradeAnimations;
     [SerializeField] private AudioSource upgradeSound;
     public static int score;
+    private static int upgradesNumber;
     private int upgradeIndex;
     private string currentBuilding;
     public static int noOfUpgrades;
     private Setup setup;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI upgradeNumText;
     [SerializeField] private GameObject DebugMessagePanel;
     [SerializeField] private GameObject Slum1;
     [SerializeField] private GameObject Slum2;
@@ -28,6 +30,7 @@ public class Upgrade : MonoBehaviour
     void Start()
     {
         noOfUpgrades = 0;
+        upgradesNumber = 4;
         setupToggle();
         score = 0;
         upgradeIndex = 0;
@@ -38,15 +41,22 @@ public class Upgrade : MonoBehaviour
     void Update()
     {
         scoreText.text = "" + score;
+        upgradeNumText.text = "" + upgradesNumber;
         if (currentBuilding != null)
         {
             int upgradeCost = setup.upgradeCost[currentBuilding][upgradeIndex - 1];
             if (MoneyScript.checkCash(upgradeCost))
             {
-                float time = setup.upgradeTime[currentBuilding][upgradeIndex - 1];
-                int incScore = setup.upgradeScores[currentBuilding][upgradeIndex - 1];
-                FindObjectOfType<MoneyScript>().updateCash(upgradeCost, '-');
-                StartCoroutine(setUpgrade(upgradeIndex, currentBuilding, incScore, time));
+                if (upgradesNumber != 0)
+                {
+                    float time = setup.upgradeTime[currentBuilding][upgradeIndex - 1];
+                    int incScore = setup.upgradeScores[currentBuilding][upgradeIndex - 1];
+                    FindObjectOfType<MoneyScript>().updateCash(upgradeCost, '-');
+                    upgradesNumber--;
+                    StartCoroutine(setUpgrade(upgradeIndex, currentBuilding, incScore, time));                    
+                }
+                else
+                    DisplayMessage("Upgrade Limit Reached!! Wait until you can do more upgrades");
             }
             else
                 DisplayMessage("Insufficient Cash");
@@ -127,6 +137,7 @@ public class Upgrade : MonoBehaviour
         //Locked all upgrades after clicking button (Please change accordingly, using switch case below) 
         disableButton(currentBuilding, upgradeIndex);
         yield return new WaitForSeconds(time);
+        upgradesNumber++;
         DisplayMessage("Upgrade Done " + setup.upgradeList[currentBuilding][upgradeIndex - 1]);
         playAnimation(currentBuilding);
         score += incScore;

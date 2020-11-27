@@ -15,7 +15,6 @@ public class MoneyScript : MonoBehaviour
     [SerializeField] private AudioSource cashSound;
     private static float changeTime;
     private static int incomeValue;
-    private static int extra=0;
     private static int totalAmount;
     private static TextMeshProUGUI moneyText;
     private static Image cashPanelImage;
