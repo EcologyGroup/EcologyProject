@@ -14,7 +14,7 @@ public class Upgrade : MonoBehaviour
     public static int score;
     private int upgradeIndex;
     private string currentBuilding;
-    private static int noOfUpgrades;
+    public static int noOfUpgrades;
     private Setup setup;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject DebugMessagePanel;
@@ -233,11 +233,11 @@ public class Upgrade : MonoBehaviour
 
                 }
                 break;
-            case "Municpality":
+            case "Municipality":
                 switch (upgradeIndex)
                 {
                     case 1:
-
+                                        
                         break;
                     case 2:
 
@@ -249,7 +249,7 @@ public class Upgrade : MonoBehaviour
                         
                         break;
                     case 5:
-                        MoneyScript.incomeValue += 50 + Mathf.Min(noOfUpgrades * 10, 50);
+                        money.setExtra(50 + Mathf.Min(50, noOfUpgrades * 10));
                         break;
                     case 6:
 

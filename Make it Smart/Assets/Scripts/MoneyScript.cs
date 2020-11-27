@@ -13,7 +13,8 @@ public class MoneyScript : MonoBehaviour
     [SerializeField] private float ChangeTime = 8f;
     [SerializeField] public int IncomeValue = 2800;
     private static float changeTime;
-    public static int incomeValue;
+    private static int incomeValue;
+    private static int extra=0;
     private static int totalAmount;
     private static TextMeshProUGUI moneyText;
     private static Image cashPanelImage;
@@ -88,6 +89,13 @@ public class MoneyScript : MonoBehaviour
             yield return new WaitForSeconds(changeTime);
             updateCash(incomeValue, '+');
         }
+    }
+
+    public void setExtra(int x)
+    {
+        StopCoroutine(income());
+        incomeValue += x;
+        //StartCoroutine(income());
     }
     
 }
