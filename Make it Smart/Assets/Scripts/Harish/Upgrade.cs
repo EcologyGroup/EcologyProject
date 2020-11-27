@@ -128,7 +128,6 @@ public class Upgrade : MonoBehaviour
         yield return new WaitForSeconds(time);
         DisplayMessage("Upgrade Done " + setup.upgradeList[currentBuilding][upgradeIndex - 1]);
         playAnimation(currentBuilding);
-        noOfUpgrades++;
         score += incScore;
         //I don't think we need a switch case unless we want to give special changes for some of the upgrades ie Sprite Change etc.
         switch (currentBuilding)
@@ -288,6 +287,7 @@ public class Upgrade : MonoBehaviour
                 }
                 break;
         }
+        noOfUpgrades++;
         scoreText.text = "" + score;
     }
     public void setState(int upgradeIndex,string currentBuilding)

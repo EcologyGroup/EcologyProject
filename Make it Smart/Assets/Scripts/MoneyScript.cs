@@ -20,6 +20,7 @@ public class MoneyScript : MonoBehaviour
     private static Image cashPanelImage;
     private static Color org;
     private IEnumerator currentCoroutine;
+    private IEnumerator cashCoroutine;
     
     public static Boolean checkCash(int amt)
     {
@@ -44,7 +45,8 @@ public class MoneyScript : MonoBehaviour
     {
         moneyText = gameObject.GetComponent<TextMeshProUGUI>();
         moneyText.text = string.Format("{0:0}", totalAmount);
-        StartCoroutine(income());
+        cashCoroutine = income();
+        StartCoroutine(cashCoroutine);
     }
     private IEnumerator colorBlink(float blinkTime, float blinkInterval, Color blinkColor)
     {
@@ -62,8 +64,10 @@ public class MoneyScript : MonoBehaviour
         }
         cashPanelImage.color = org;
     }
-    public static IEnumerator refresh()
+    public IEnumerator refresh()
     {
+        if (cashCoroutine != null)
+            StopCoroutine(cashCoroutine);
         cashPanelImage.color = org;
         float t = Timer.timeRemaining % changeTime;
         if (t != 0)
@@ -93,9 +97,10 @@ public class MoneyScript : MonoBehaviour
 
     public void setExtra(int x)
     {
-        StopCoroutine(income());
         incomeValue += x;
-        //StartCoroutine(income());
+        IncomeValue = incomeValue;
+        Debug.Log(incomeValue);
+        StartCoroutine(refresh());
     }
     
 }
