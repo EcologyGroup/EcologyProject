@@ -14,6 +14,7 @@ public class Upgrade : MonoBehaviour
     public static int score;
     private int upgradeIndex;
     private string currentBuilding;
+    private static int noOfUpgrades;
     private Setup setup;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject DebugMessagePanel;
@@ -22,13 +23,15 @@ public class Upgrade : MonoBehaviour
     [SerializeField] private Sprite Slums;
     private IEnumerator currentCoroutine;
     private Dictionary<string, GameObject> toggleObjects;//to turn them on or off
+    private MoneyScript money;
     void Start()
     {
+        noOfUpgrades = 0;
         setupToggle();
         score = 0;
         upgradeIndex = 0;
         currentBuilding = null;
-        
+        money = FindObjectOfType<MoneyScript>();
         setup = FindObjectOfType<Setup>();
     }
     void Update()
@@ -125,12 +128,13 @@ public class Upgrade : MonoBehaviour
         yield return new WaitForSeconds(time);
         DisplayMessage("Upgrade Done " + setup.upgradeList[currentBuilding][upgradeIndex - 1]);
         playAnimation(currentBuilding);
+        noOfUpgrades++;
         score += incScore;
         //I don't think we need a switch case unless we want to give special changes for some of the upgrades ie Sprite Change etc.
         switch (currentBuilding)
         {
             case "Hospital":
-                switch (upgradeIndex)
+                switch (upgradeIndex )
                 {
                     case 1:
                         
@@ -242,10 +246,10 @@ public class Upgrade : MonoBehaviour
 
                         break;
                     case 4:
-
+                        
                         break;
                     case 5:
-
+                        MoneyScript.incomeValue += 50 + Mathf.Min(noOfUpgrades * 10, 50);
                         break;
                     case 6:
 

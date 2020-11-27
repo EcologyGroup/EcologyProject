@@ -52,7 +52,7 @@ public class Setup : MonoBehaviour
         sprite.Add("Grid", gridUpgrade);
         sprite.Add("Industry", indsUpgrade);
         sprite.Add("Office", offUpgrade);
-        sprite.Add("Municpality", MunicipalityUpgrade);
+        sprite.Add("Municipality", MunicipalityUpgrade);
         sprite.Add("Slums", slumsUpgrade);
 
         //Add Upgrades for remaining Buildings similarly
@@ -76,7 +76,7 @@ public class Setup : MonoBehaviour
             "Organize Tech Expo(Cost: 2000)", "Training Programs for Employees(Cost: 1800)",
             "Startup Incubators(Cost: 1300)", "Improve e-Commerce(Cost: 2200)" });
         
-        upgradeList.Add("Municpality", new string[] { "Waste Sorting at Source(Cost: 1200)",
+        upgradeList.Add("Municipality", new string[] { "Waste Sorting at Source(Cost: 1200)",
             "Smart Bins(Cost: 2400)", "Revamp Sewage System(Cost: 4000)", "Improve Water Treatment Plant Capacity(Cost: 3000)",
             "Increase Tax(Cost: 500)", 
             "Transit Apps for Public Transportation(Cost: 1500)", "Intelligent Transportation Systems(Cost: 3500)", 
@@ -95,7 +95,7 @@ public class Setup : MonoBehaviour
         upgradeTime.Add("Grid", new float[] { 25f, 15f, 25f, 12f });
         upgradeTime.Add("Industry", new float[] { 25f, 10f, 12f, 15f });
         upgradeTime.Add("Office", new float[] { 11f, 11f, 11f, 12f, 12f, 12f });
-        upgradeTime.Add("Municpality", new float[] { 9f, 15f, 20f, 20f, 5f, 10f, 18f, 7f, 7f, 11f, 10f, 12f });
+        upgradeTime.Add("Municipality", new float[] { 9f, 15f, 20f, 20f, 5f, 10f, 18f, 7f, 7f, 11f, 10f, 12f });
         upgradeTime.Add("Slums", new float[] { 25f, 12f, 12f, 12f, 12f, 12f, 10f });
 
 
@@ -105,7 +105,7 @@ public class Setup : MonoBehaviour
         isButtonDisabled.Add("Grid", new Boolean[4]);
         isButtonDisabled.Add("Industry", new Boolean[4]);
         isButtonDisabled.Add("Office", new Boolean[6]);
-        isButtonDisabled.Add("Municpality", new Boolean[12]);
+        isButtonDisabled.Add("Municipality", new Boolean[12]);
         isButtonDisabled.Add("Slums", new Boolean[7]);
 
         upgradeCost.Add("Hospital", new int[] { 7000, 1000, 1500, 400, 800 });
@@ -113,7 +113,7 @@ public class Setup : MonoBehaviour
         upgradeCost.Add("Grid", new int[] { 5000, 1800, 5000, 2000 });
         upgradeCost.Add("Industry", new int[] { 6000, 1500, 1800, 2000 });
         upgradeCost.Add("Office", new int[] { 1000, 1500, 2000, 1800, 1300, 2200 });
-        upgradeCost.Add("Municpality", new int[] { 1200, 2400, 4000, 3000, 500, 1500, 3500, 750, 600, 1500, 1800, 1400 });
+        upgradeCost.Add("Municipality", new int[] { 1200, 2400, 4000, 3000, 500, 1500, 3500, 750, 600, 1500, 1800, 1400 });
         upgradeCost.Add("Slums", new int[] { 5500, 1800, 1300, 1500, 1500, 2000, 2500 });
 
         upgradeSprite.Add("PoliceStation",psUpgradeButtons);
@@ -121,7 +121,7 @@ public class Setup : MonoBehaviour
         upgradeSprite.Add("Grid", gridUpgradeButtons);
         upgradeSprite.Add("Industry", indsUpgradeButtons);
         upgradeSprite.Add("Office", offUpgradeButtons);
-        upgradeSprite.Add("Municpality", MunicipalityUpgradeButtons);
+        upgradeSprite.Add("Municipality", MunicipalityUpgradeButtons);
         upgradeSprite.Add("Slums", slumsUpgradeButtons);
 
         upgradeScores.Add("Hospital", new int[] { 700, 100, 150, 50, 75 });
@@ -129,7 +129,7 @@ public class Setup : MonoBehaviour
         upgradeScores.Add("Grid", new int[] { 500, 150, 500, 200 });
         upgradeScores.Add("Industry", new int[] { 550, 125, 150, 150 });
         upgradeScores.Add("Office", new int[] { 150, 100, 200, 100, 100, 150 });
-        upgradeScores.Add("Municpality", new int[] { 100, 200, 450, 250, 0, 100, 350, 75, 75, 100, 150, 150 });
+        upgradeScores.Add("Municipality", new int[] { 100, 200, 450, 250, 0, 100, 350, 75, 75, 100, 150, 150 });
         upgradeScores.Add("Slums", new int[] { 550, 200, 150, 125, 150, 125, 200 });
 
         
