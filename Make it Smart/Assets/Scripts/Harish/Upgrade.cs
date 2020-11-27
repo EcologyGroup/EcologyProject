@@ -30,7 +30,7 @@ public class Upgrade : MonoBehaviour
     void Start()
     {
         noOfUpgrades = 0;
-        upgradesNumber = 4;
+        upgradesNumber = 3;
         setupToggle();
         score = 0;
         upgradeIndex = 0;

@@ -56,7 +56,7 @@ public class Interactables : MonoBehaviour
     {
         if (masterCoroutine != null)
             StopCoroutine(masterCoroutine);
-        Upgrade.score += 50;
+        Upgrade.score += 25;
         string msg = "";
         if (iconIndex == 0)
             msg = "Crime Scene Reported!!";
