@@ -35,6 +35,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Resume(){
+
         gameIsPaused = false;
         panels[panels.Length - 1].SetActive(false);
         for (int i = 0; i < 3; i++)

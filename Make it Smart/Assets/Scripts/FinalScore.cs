@@ -18,7 +18,7 @@ public class FinalScore : MonoBehaviour
         if (scoreDisplayed < scoreFinal)
         {
             scoreDisplayed += increment;
-            finalText.text = scoreDisplayed.ToString("0");
+            finalText.text = "" + scoreDisplayed;
         }
     }
     private void OnEnable()

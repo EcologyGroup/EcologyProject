@@ -7,16 +7,20 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private float gameTime = 600;
+    [SerializeField] private GameObject pausePanel;
     public static float timeRemaining;
     bool timerIsRunning = false;
     public TextMeshProUGUI timeText;
     public GameObject ResultPanel;
+    private PauseMenu pauseobj;
+
 
     void Start()
     {
         timeRemaining = gameTime;
         timeText = gameObject.GetComponent<TextMeshProUGUI>();
         timerIsRunning = true;
+        pauseobj = FindObjectOfType<PauseMenu>();
     }
     void Update()
     {
@@ -34,8 +38,12 @@ public class Timer : MonoBehaviour
                     Debug.Log("Time has run out!");
                     timeRemaining = 0;
                     Time.timeScale = 0f;
-                    ResultPanel.SetActive(true);
                     timerIsRunning = false;
+                    pauseobj.Pause();
+                    pausePanel.SetActive(false);
+                    pauseobj.GameOver(true);
+                    ResultPanel.SetActive(true);
+
                 }
             }
         }
