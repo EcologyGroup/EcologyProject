@@ -6,6 +6,7 @@ public class Interactables : MonoBehaviour
 {
     [SerializeField] private Sprite[] interactiveIcons;
     [SerializeField] private float visibleTime = 40f;
+    [SerializeField] AudioSource btnclick;
     private Setup setup;
     private int index;
     private IEnumerator currentCoroutine;
@@ -13,6 +14,7 @@ public class Interactables : MonoBehaviour
 
     void Start()
     {
+        //btnclick = GetComponent<AudioSource>();
         setup = FindObjectOfType<Setup>();
         masterCoroutine = initiate();
         StartCoroutine(masterCoroutine);
@@ -54,6 +56,8 @@ public class Interactables : MonoBehaviour
     {
         if (masterCoroutine != null)
             StopCoroutine(masterCoroutine);
+        Upgrade.score += 50;
+        btnclick.Play();
         yield return StartCoroutine(fade('-', 1f));
         masterCoroutine = initiate();
         StartCoroutine(masterCoroutine);

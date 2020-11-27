@@ -28,11 +28,12 @@ public class Upgrade : MonoBehaviour
         score = 0;
         upgradeIndex = 0;
         currentBuilding = null;
-        scoreText.text = "" + score;
+        
         setup = FindObjectOfType<Setup>();
     }
     void Update()
     {
+        scoreText.text = "" + score;
         if (currentBuilding != null)
         {
             int upgradeCost = setup.upgradeCost[currentBuilding][upgradeIndex - 1];
