@@ -158,8 +158,10 @@ public class Upgrade : MonoBehaviour
         {
             if (!level3)
             {
+                yield return new WaitForSeconds(5f);
                 DisplayMessage("Congratulations!! Your city has reached a new level");
-                money.setExtra(100);
+                upgradeSound.Play();
+                money.setExtra(200);
             }
             cityLevel = 3;
             cityLevelText.text = string.Format("City Level: {0:0}", cityLevel);
@@ -170,7 +172,9 @@ public class Upgrade : MonoBehaviour
         {
             if (!level2)
             {
+                yield return new WaitForSeconds(5f);
                 DisplayMessage("Congratulations!! Your city has reached a new level");
+                upgradeSound.Play();
                 money.setExtra(100);
             }
             cityLevel = 2;

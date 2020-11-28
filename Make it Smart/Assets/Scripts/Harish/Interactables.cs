@@ -5,7 +5,7 @@ using UnityEngine;
 public class Interactables : MonoBehaviour
 {
     [SerializeField] private Sprite[] interactiveIcons;//0 - Crime 1 - Accident/Medical 2 - Repair
-    [SerializeField] private float visibleTime = 40f;
+    [SerializeField] private float visibleTime = 25f;
     [SerializeField] AudioSource btnclick;
     private Setup setup;
     private int buildingIndex;
