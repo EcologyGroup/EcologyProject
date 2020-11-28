@@ -154,28 +154,28 @@ public class Upgrade : MonoBehaviour
         score += incScore;
         upgradeSound.Play();
         noOfUpgrades+=setup.upgradeLevel[currentBuilding][upgradeIndex-1];
-        if (noOfUpgrades > 25)
+        if (noOfUpgrades > 28)
         {
             if (!level3)
             {
                 yield return new WaitForSeconds(5f);
                 DisplayMessage("Congratulations!! Your city has reached a new level");
                 upgradeSound.Play();
-                money.setExtra(200);
+                money.setExtra(150);
             }
             cityLevel = 3;
             cityLevelText.text = string.Format("City Level: {0:0}", cityLevel);
             level3 = true;
             
         }
-        else if (noOfUpgrades > 11)
+        else if (noOfUpgrades > 13)
         {
             if (!level2)
             {
                 yield return new WaitForSeconds(5f);
                 DisplayMessage("Congratulations!! Your city has reached a new level");
                 upgradeSound.Play();
-                money.setExtra(100);
+                money.setExtra(150);
             }
             cityLevel = 2;
             cityLevelText.text = string.Format("City Level: {0:0}", cityLevel);
