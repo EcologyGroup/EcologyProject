@@ -68,8 +68,6 @@ public class rayCast : MonoBehaviour
                         }
                         else
                             isPanelActive = false;
-                        if (setup.upgradeList.ContainsKey(currentBuilding))
-                            setButtons();
                     }
                     else
                         isPanelActive = false;
@@ -78,6 +76,7 @@ public class rayCast : MonoBehaviour
                     isPanelActive = false;
                 if (isPanelActive)
                 {
+                    refreshPanel();
                     if (currentCoroutine != null)
                         StopCoroutine(currentCoroutine);
                     currentCoroutine = displayPanel('+');
@@ -97,7 +96,7 @@ public class rayCast : MonoBehaviour
     }
     private IEnumerator displayPanel(char c)
     {
-        float displayTime = 10f;
+        float displayTime = 15f;
         float fadeTime = 0.8f;
         CanvasGroup panel = upgradePanelCanvas.GetComponent<CanvasGroup>();
         panel.alpha = 1;
@@ -121,7 +120,11 @@ public class rayCast : MonoBehaviour
     {
         string[] upgrades=setup.upgradeList[currentBuilding];
         for (int i = 0; i < upgrades.Length; i++)
+        {
             buttons[i].SetActive(true);
+            buttons[i].transform.GetChild(1).gameObject.SetActive(false);
+            buttons[i].transform.GetChild(0).GetComponent<Button>().GetComponent<Image>().color = def;
+        }
         for (int i = upgrades.Length; i < buttons.Length; i++)
             buttons[i].SetActive(false);
         for (int i = 0; i < upgrades.Length; i++)
@@ -146,7 +149,7 @@ public class rayCast : MonoBehaviour
         if (!setup.isButtonDisabled[currentBuilding][index - 1])
             FindObjectOfType<Upgrade>().setState(index, currentBuilding);
         else
-            Debug.Log("Locked");
+            FindObjectOfType<Upgrade>().DisplayMessage("Completed");
     }
     public void mouseEnter(int i)
     {
@@ -168,7 +171,7 @@ public class rayCast : MonoBehaviour
         }
         Vector2 trueSize = popupText.GetPreferredValues(popupText.text);
         Vector2 preferredSize = new Vector2(trueSize.x + padding * 2f, trueSize.y + padding * 2f);
-        Vector2 anchorPos = new Vector2(0, preferredSize.y / 2f);
+        Vector2 anchorPos = new Vector2(preferredSize.x / 4f, preferredSize.y / 2f);
         popupTransform.sizeDelta = preferredSize;
         popupTransform.anchoredPosition = anchorPos;
         popup.SetActive(true);
