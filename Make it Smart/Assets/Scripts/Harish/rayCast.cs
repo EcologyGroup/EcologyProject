@@ -123,7 +123,7 @@ public class rayCast : MonoBehaviour
         {
             buttons[i].SetActive(true);
             buttons[i].transform.GetChild(1).gameObject.SetActive(false);
-            buttons[i].transform.GetChild(0).GetComponent<Button>().GetComponent<Image>().color = def;
+            buttons[i].transform.GetChild(0).GetComponent<Image>().color = def;
         }
         for (int i = upgrades.Length; i < buttons.Length; i++)
             buttons[i].SetActive(false);
