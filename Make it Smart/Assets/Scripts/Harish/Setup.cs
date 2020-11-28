@@ -58,30 +58,32 @@ public class Setup : MonoBehaviour
         //Add Upgrades for remaining Buildings similarly
         upgradeList.Add("Hospital", new string[] { "Multi Super-Specialty Hospital(Cost: 7000)", 
             "Modernize Medical Equipment(Cost: 1000)",
-            "e-Healthcare Initiative(Cost: 1500)", "Organize Health Awareness Camps(Cost: 400)",
-            "Proper Biomedical Waste Treatment(Cost: 800)" });
+            "e-Healthcare Initiatives(Cost: 1500)", "Organize Health Awareness Campaigns(Cost: 400)",
+            "Ensure Proper Biomedical Waste Treatment(Cost: 800)" });
         
         upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station(Cost: 1200)", 
             "Modernize Police Equipment(Cost: 1400)", "CCTV Monitoring in City(Cost: 1750)", 
-            "Eco-friendly Traffic Awareness Mission(Cost: 450)", 
+            "Eco-friendly Traffic Awareness Campaigns(Cost: 450)", 
             "Digitalize Police Records(Cost: 500)", "Cyber Security Cell(Cost: 1000)" });
         
         upgradeList.Add("Grid", new string[] { "Construct Solar Farm(Cost: 5000)", "Introduce Electric Cars(Cost: 1800)",
-            "Smart Grid(Cost: 5000)", "Construct Windmill(Cost: 2000)" });
+            "Smart Grid(Cost: 5000)", "Construct Windmills(Cost: 2000)" });
        //solar farm  //windmill
         upgradeList.Add("Industry", new string[] { "Industry 4.0 Technologies (Cost: 6000)", 
             "Smart Supply Chain(Cost: 1500)", "Waste Treatment(Cost: 1800)", "Pollution Tower(Cost: 2000)" });
         //pollution tower
-        upgradeList.Add("Office", new string[] { "Infrastructure Upgrades(Cost: 1000) ", "High Speed Network(Cost: 1500)",
+        upgradeList.Add("Office", new string[] { "Infrastructure Upgrades(Cost: 1000) ", 
+            "High Speed Network(Cost: 1500)",
             "Organize Tech Expo(Cost: 2000)", "Training Programs for Employees(Cost: 1800)",
-            "Startup Incubators(Cost: 1300)", "Improve e-Commerce(Cost: 2200)" });
+            "Startup Incubators(Cost: 1300)", "Improve e-Commerce facilities(Cost: 2200)" });
         
         upgradeList.Add("Municipality", new string[] { "Waste Sorting at Source(Cost: 1200)",
             "Smart Bins(Cost: 2400)", "Revamp Sewage System(Cost: 4000)", "Improve Water Treatment Plant Capacity(Cost: 3000)",
-            "Increase Tax(Cost: 500)", 
+            "Increase Tax(Cost: 600)", 
             "Transit Apps for Public Transportation(Cost: 1500)", "Intelligent Transportation Systems(Cost: 3500)", 
-            "Road Maintaince(Cost: 750)", "Maintenance of Public Buildings(Cost: 600)", "E-Transport Initiatives(Cost: 1500) ",
-                                    "Eco-Toilets(Cost: 1800)",
+            "Road Maintaince(Cost: 1000)", "Maintenance of Public Buildings(Cost: 800)", 
+            "Improve E-Transport Initiatives(Cost: 1500) ",
+            "Eco-Toilets(Cost: 1800)",
             "Strengthen rules for Pollution Clearance of Vehicles(Cost: 1400)"});
         //waste bin color change
         upgradeList.Add("Slums", new string[] { "Revamp Housing(Cost: 5500)", "Clean Water Supply(Cost: 1800)",
