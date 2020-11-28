@@ -17,6 +17,7 @@ public class Upgrade : MonoBehaviour
     private int upgradeIndex;
     private string currentBuilding;
     public static int noOfUpgrades;
+    private static int cityLevel;
     private Setup setup;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI upgradeNumText;
@@ -37,6 +38,7 @@ public class Upgrade : MonoBehaviour
         currentBuilding = null;
         money = FindObjectOfType<MoneyScript>();
         setup = FindObjectOfType<Setup>();
+        cityLevel = 1;
     }
     void Update()
     {
@@ -45,21 +47,26 @@ public class Upgrade : MonoBehaviour
         if (currentBuilding != null)
         {
             int upgradeCost = setup.upgradeCost[currentBuilding][upgradeIndex - 1];
-            if (MoneyScript.checkCash(upgradeCost))
+            if (setup.upgradeLevel[currentBuilding][upgradeIndex - 1] <= cityLevel)
             {
-                if (upgradesNumber != 0)
+                if (MoneyScript.checkCash(upgradeCost))
                 {
-                    float time = setup.upgradeTime[currentBuilding][upgradeIndex - 1];
-                    int incScore = setup.upgradeScores[currentBuilding][upgradeIndex - 1];
-                    FindObjectOfType<MoneyScript>().updateCash(upgradeCost, '-');
-                    upgradesNumber--;
-                    StartCoroutine(setUpgrade(upgradeIndex, currentBuilding, incScore, time));                    
+                    if (upgradesNumber != 0)
+                    {
+                        float time = setup.upgradeTime[currentBuilding][upgradeIndex - 1];
+                        int incScore = setup.upgradeScores[currentBuilding][upgradeIndex - 1];
+                        FindObjectOfType<MoneyScript>().updateCash(upgradeCost, '-');
+                        upgradesNumber--;
+                        StartCoroutine(setUpgrade(upgradeIndex, currentBuilding, incScore, time));
+                    }
+                    else
+                        DisplayMessage("Upgrade Limit Reached!! Wait until you can do more upgrades");
                 }
                 else
-                    DisplayMessage("Upgrade Limit Reached!! Wait until you can do more upgrades");
+                    DisplayMessage("Insufficient Cash");
             }
             else
-                DisplayMessage("Insufficient Cash");
+                DisplayMessage("A higher city level is required");
         }
         currentBuilding = null;
     }

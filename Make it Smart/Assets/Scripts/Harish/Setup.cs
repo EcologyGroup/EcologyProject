@@ -28,6 +28,7 @@ public class Setup : MonoBehaviour
     public Dictionary<string, int[]> upgradeScores;
     public Dictionary<string, float[]> upgradeTime;
     public Dictionary<string, int[]> upgradeCost;
+    public Dictionary<string, int[]> upgradeLevel;
     public Dictionary<string, Boolean[]> isButtonDisabled;
     void Start()
     {
@@ -37,6 +38,7 @@ public class Setup : MonoBehaviour
         upgradeScores = new Dictionary<string, int[]>();
         upgradeTime = new Dictionary<string, float[]>();
         upgradeCost = new Dictionary<string, int[]>();
+        upgradeLevel = new Dictionary<string, int[]>();
         isButtonDisabled = new Dictionary<string, Boolean[]>();
         foreach (Transform Building in Buildings)
         {
@@ -56,40 +58,52 @@ public class Setup : MonoBehaviour
         sprite.Add("Slums", slumsUpgrade);
 
         //Add Upgrades for remaining Buildings similarly
-        upgradeList.Add("Hospital", new string[] { "Multi Super-Specialty Hospital(Cost: 7000)", 
-            "Modernize Medical Equipment(Cost: 1000)",
-            "e-Healthcare Initiatives(Cost: 1500)", "Organize Health Awareness Campaigns(Cost: 400)",
-            "Ensure Proper Biomedical Waste Treatment(Cost: 800)" });
+        upgradeList.Add("Hospital", new string[] { "Multi Super-Specialty Hospital(Cost: 7000, Required Level: 3)",
+            "Modernize Medical Equipment(Cost: 1000, Required Level: 1)",
+            "e-Healthcare Initiatives(Cost: 1500, Required Level: 2)",
+            "Organize Health Awareness Campaigns(Cost: 400, Required Level: 1)",
+            "Ensure Proper Biomedical Waste Treatment(Cost: 800, Required Level: 2)" });
         
-        upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station(Cost: 1200)", 
-            "Modernize Police Equipment(Cost: 1400)", "CCTV Monitoring in City(Cost: 1750)", 
-            "Eco-friendly Traffic Awareness Campaigns(Cost: 450)", 
-            "Digitalize Police Records(Cost: 500)", "Cyber Security Cell(Cost: 1000)" });
+        upgradeList.Add("PoliceStation", new string[] { "Virtual Police Station(Cost: 2800, Required Level: 3)",
+            "Modernize Police Equipment(Cost: 1400, Required Level: 1)",
+            "CCTV Monitoring in City(Cost: 1750, Required Level: 2)",
+            "Eco-friendly Traffic Awareness Campaigns(Cost: 450, Required Level: 1)",
+            "Digitalize Police Records(Cost: 500, Required Level: 1)", "Cyber Security Cell(Cost: 1000, Required Level: 2)" });
         
-        upgradeList.Add("Grid", new string[] { "Construct Solar Farm(Cost: 5000)", "Introduce Electric Cars(Cost: 1800)",
-            "Smart Grid(Cost: 5000)", "Construct Windmills(Cost: 2000)" });
+        upgradeList.Add("Grid", new string[] { "Construct Solar Farm(Cost: 5000, Required Level: 3)",
+            "Introduce Electric Cars(Cost: 1800, Required Level: 2)",
+            "Smart Grid(Cost: 5000, Required Level: 3)", "Construct Windmills(Cost: 2000, Required Level: 2)" });
        //solar farm  //windmill
-        upgradeList.Add("Industry", new string[] { "Industry 4.0 Technologies (Cost: 6000)", 
-            "Smart Supply Chain(Cost: 1500)", "Waste Treatment(Cost: 1800)", "Pollution Tower(Cost: 2000)" });
+        upgradeList.Add("Industry", new string[] { "Industry 4.0 Technologies (Cost: 6000, Required Level: 3)",
+            "Smart Supply Chain(Cost: 1500, Required Level: 1)",
+            "Waste Treatment(Cost: 1800, Required Level: 1)", "Pollution Tower(Cost: 2000, Required Level: 2)" });
         //pollution tower
-        upgradeList.Add("Office", new string[] { "Infrastructure Upgrades(Cost: 1000) ", 
-            "High Speed Network(Cost: 1500)",
-            "Organize Tech Expo(Cost: 2000)", "Training Programs for Employees(Cost: 1800)",
-            "Startup Incubators(Cost: 1300)", "Improve e-Commerce facilities(Cost: 2200)" });
+        upgradeList.Add("Office", new string[] { "Infrastructure Upgrades(Cost: 1000, Required Level: 1) ",
+            "High Speed Network(Cost: 1500, Required Level: 1)",
+            "Organize Tech Expo(Cost: 2000, Required Level: 2)",
+            "Training Programs for Employees(Cost: 1800, Required Level: 2)",
+            "Startup Incubators(Cost: 1300, Required Level: 1)", 
+            "Improve e-Commerce facilities(Cost: 2200, Required Level: 1)" });
         
-        upgradeList.Add("Municipality", new string[] { "Waste Sorting at Source(Cost: 1200)",
-            "Smart Bins(Cost: 2400)", "Revamp Sewage System(Cost: 4000)", "Improve Water Treatment Plant Capacity(Cost: 3000)",
-            "Increase Tax(Cost: 600)", 
-            "Transit Apps for Public Transportation(Cost: 1500)", "Intelligent Transportation Systems(Cost: 3500)", 
-            "Road Maintaince(Cost: 1000)", "Maintenance of Public Buildings(Cost: 800)", 
-            "Improve E-Transport Initiatives(Cost: 1500) ",
-            "Eco-Toilets(Cost: 1800)",
-            "Strengthen rules for Pollution Clearance of Vehicles(Cost: 1400)"});
+        upgradeList.Add("Municipality", new string[] { "Waste Sorting at Source(Cost: 1200, Required Level: 1)",
+            "Smart Bins(Cost: 2400, Required Level: 2)", "Revamp Sewage System(Cost: 4000, Required Level: 3)",
+            "Improve Water Treatment Plant Capacity(Cost: 3000, Required Level: 2)",
+            "Increase Tax(Cost: 600, Required Level: 2)",
+            "Transit Apps for Public Transportation(Cost: 1500, Required Level: 1)",
+            "Intelligent Transportation Systems(Cost: 3500, Required Level: 2)",
+            "Road Maintaince(Cost: 1000, Required Level: 1)",
+            "Maintenance of Public Buildings(Cost: 800, Required Level: 1)",
+            "Improve E-Transport Initiatives(Cost: 1500, Required Level: 1) ",
+            "Eco-Toilets(Cost: 1800, Required Level: 2)",
+            "Strengthen rules for Pollution Clearance of Vehicles(Cost: 1400, Required Level: 2)"});
         //waste bin color change
-        upgradeList.Add("Slums", new string[] { "Revamp Housing(Cost: 5500)", "Clean Water Supply(Cost: 1800)",
-            "Improve Sanitation Facilities(Cost: 1300)", "Provide Electricity at Reasonable Costs(Cost: 1500)",
-            "Provide Health Facilities(Cost: 1500)","Revamp Road Network(Cost: 2000)",
-            "Welfare Schemes for Children(Cost: 2500)" });
+        upgradeList.Add("Slums", new string[] { "Revamp Housing(Cost: 5500, Required Level: 2)",
+            "Clean Water Supply(Cost: 1800, Required Level: 1)",
+            "Improve Sanitation Facilities(Cost: 1300, Required Level: 1)",
+            "Provide Electricity at Reasonable Costs(Cost: 1500, Required Level: 2)",
+            "Provide Health Facilities(Cost: 1500, Required Level: 1)",
+            "Revamp Road Network(Cost: 2000, Required Level: 2)",
+            "Welfare Schemes for Children(Cost: 2500, Required Level: 1" });
         //sprite change for slums
 
         upgradeTime.Add("Hospital", new float[] { 30f, 11f, 13f, 8f, 14f});
@@ -111,11 +125,11 @@ public class Setup : MonoBehaviour
         isButtonDisabled.Add("Slums", new Boolean[7]);
 
         upgradeCost.Add("Hospital", new int[] { 7000, 1000, 1500, 400, 800 });
-        upgradeCost.Add("PoliceStation", new int[] { 1200, 1400, 1750, 450, 500, 1000 });
+        upgradeCost.Add("PoliceStation", new int[] {2800, 1400, 1750, 450, 500, 1000 });
         upgradeCost.Add("Grid", new int[] { 5000, 1800, 5000, 2000 });
         upgradeCost.Add("Industry", new int[] { 6000, 1500, 1800, 2000 });
         upgradeCost.Add("Office", new int[] { 1000, 1500, 2000, 1800, 1300, 2200 });
-        upgradeCost.Add("Municipality", new int[] { 1200, 2400, 4000, 3000, 500, 1500, 3500, 750, 600, 1500, 1800, 1400 });
+        upgradeCost.Add("Municipality", new int[] { 1200, 2400, 4000, 3000, 600, 1500, 3500, 1000,800, 1500, 1800, 1400 });
         upgradeCost.Add("Slums", new int[] { 5500, 1800, 1300, 1500, 1500, 2000, 2500 });
 
         upgradeSprite.Add("PoliceStation",psUpgradeButtons);
@@ -134,6 +148,12 @@ public class Setup : MonoBehaviour
         upgradeScores.Add("Municipality", new int[] { 100, 200, 450, 250, 0, 100, 350, 75, 75, 100, 150, 150 });
         upgradeScores.Add("Slums", new int[] { 550, 200, 150, 125, 150, 125, 200 });
 
-        
+        upgradeLevel.Add("Hospital", new int[] { 3,1,2,1,2});
+        upgradeLevel.Add("PoliceStation", new int[] { 3,1,2,1,1,2});
+        upgradeLevel.Add("Grid", new int[] {3,2,3,2 });
+        upgradeLevel.Add("Industry", new int[] { 3,1,1,2 });
+        upgradeLevel.Add("Office", new int[] { 1,1,2,2,1,1 });
+        upgradeLevel.Add("Municipality", new int[] { 1,2,3,2,2,1,2,1,1,1,2,2 });
+        upgradeLevel.Add("Slums", new int[] { 2,1,1,2,1,2,1 });
     }
 }
