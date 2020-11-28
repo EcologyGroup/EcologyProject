@@ -156,8 +156,11 @@ public class Upgrade : MonoBehaviour
         noOfUpgrades+=setup.upgradeLevel[currentBuilding][upgradeIndex-1];
         if (noOfUpgrades > 25)
         {
-            if(!level3)
+            if (!level3)
+            {
                 DisplayMessage("Congratulations!! Your city has reached a new level");
+                money.setExtra(100);
+            }
             cityLevel = 3;
             cityLevelText.text = string.Format("City Level: {0:0}", cityLevel);
             level3 = true;
@@ -165,8 +168,11 @@ public class Upgrade : MonoBehaviour
         }
         else if (noOfUpgrades > 11)
         {
-            if(!level2)
+            if (!level2)
+            {
                 DisplayMessage("Congratulations!! Your city has reached a new level");
+                money.setExtra(100);
+            }
             cityLevel = 2;
             cityLevelText.text = string.Format("City Level: {0:0}", cityLevel);
             level2 = true;
