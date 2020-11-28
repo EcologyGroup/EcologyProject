@@ -17,10 +17,12 @@ public class Upgrade : MonoBehaviour
     private int upgradeIndex;
     private string currentBuilding;
     public static int noOfUpgrades;
+    private bool level2, level3;
     private static int cityLevel;
     private Setup setup;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI upgradeNumText;
+    [SerializeField] private TextMeshProUGUI cityLevelText;
     [SerializeField] private GameObject DebugMessagePanel;
     [SerializeField] private GameObject Slum1;
     [SerializeField] private GameObject Slum2;
@@ -30,6 +32,8 @@ public class Upgrade : MonoBehaviour
     private MoneyScript money;
     void Start()
     {
+        level3 = false;
+        level2 = false;
         noOfUpgrades = 0;
         upgradesNumber = 3;
         setupToggle();
@@ -152,11 +156,20 @@ public class Upgrade : MonoBehaviour
         noOfUpgrades+=setup.upgradeLevel[currentBuilding][upgradeIndex-1];
         if (noOfUpgrades > 25)
         {
+            if(!level3)
+                DisplayMessage("Congratulations!! Your city has reached a new level");
             cityLevel = 3;
+            cityLevelText.text = string.Format("City Level: {0:0}", cityLevel);
+            level3 = true;
+            
         }
         else if (noOfUpgrades > 11)
         {
+            if(!level2)
+                DisplayMessage("Congratulations!! Your city has reached a new level");
             cityLevel = 2;
+            cityLevelText.text = string.Format("City Level: {0:0}", cityLevel);
+            level2 = true;
         }
         //I don't think we need a switch case unless we want to give special changes for some of the upgrades ie Sprite Change etc.
         switch (currentBuilding)
