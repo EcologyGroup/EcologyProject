@@ -103,8 +103,8 @@ public class Upgrade : MonoBehaviour
         TextMeshProUGUI message = DebugMessagePanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         message.text = msg;
         RectTransform panelTransform = DebugMessagePanel.GetComponent<RectTransform>();
-        panelTransform.sizeDelta = Vector2.zero;
-        panelTransform.sizeDelta = new Vector2(message.preferredWidth + padding * 2f, message.preferredHeight + padding * 2f);
+        Vector2 trueSize = message.GetPreferredValues(message.text);
+        panelTransform.sizeDelta = new Vector2(trueSize.x + padding * 2f, trueSize.y + padding * 2f);
         panelTransform.anchoredPosition = new Vector2(-200f + panelTransform.sizeDelta.x / 2, panelTransform.anchoredPosition.y);
         panel.alpha = 1;
         DebugMessagePanel.SetActive(true);
