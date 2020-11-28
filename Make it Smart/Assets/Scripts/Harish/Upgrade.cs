@@ -149,6 +149,15 @@ public class Upgrade : MonoBehaviour
         playAnimation(currentBuilding);
         score += incScore;
         upgradeSound.Play();
+        noOfUpgrades+=setup.upgradeLevel[currentBuilding][upgradeIndex-1];
+        if (noOfUpgrades > 25)
+        {
+            cityLevel = 3;
+        }
+        else if (noOfUpgrades > 11)
+        {
+            cityLevel = 2;
+        }
         //I don't think we need a switch case unless we want to give special changes for some of the upgrades ie Sprite Change etc.
         switch (currentBuilding)
         {
@@ -307,7 +316,7 @@ public class Upgrade : MonoBehaviour
                 }
                 break;
         }
-        noOfUpgrades++;
+        
         scoreText.text = "" + score;
     }
     public void setState(int upgradeIndex,string currentBuilding)
