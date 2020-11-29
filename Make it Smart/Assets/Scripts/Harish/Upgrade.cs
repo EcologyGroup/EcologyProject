@@ -161,11 +161,11 @@ public class Upgrade : MonoBehaviour
                 yield return new WaitForSeconds(5f);
                 DisplayMessage("Congratulations!! Your city has reached a new level");
                 upgradeSound.Play();
-                money.setExtra(150);
+                money.setExtra(80);
             }
             cityLevel = 3;
             cityLevelText.text = string.Format("City Level: {0:0}", cityLevel);
-            level3 = true;
+            this.level3 = true;
             
         }
         else if (noOfUpgrades > 13)
@@ -175,11 +175,11 @@ public class Upgrade : MonoBehaviour
                 yield return new WaitForSeconds(5f);
                 DisplayMessage("Congratulations!! Your city has reached a new level");
                 upgradeSound.Play();
-                money.setExtra(150);
+                money.setExtra(130);
             }
             cityLevel = 2;
             cityLevelText.text = string.Format("City Level: {0:0}", cityLevel);
-            level2 = true;
+            this.level2 = true;
         }
         //I don't think we need a switch case unless we want to give special changes for some of the upgrades ie Sprite Change etc.
         switch (currentBuilding)

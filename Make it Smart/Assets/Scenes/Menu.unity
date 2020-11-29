@@ -3215,7 +3215,7 @@ GameObject:
   - component: {fileID: 1389749763}
   - component: {fileID: 1389749762}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3260,7 +3260,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Credits @Githin George, Seeram Pavan, Harish Pradyot, D P Sahithi Rani,
+  m_text: Credits @ Harish Pradyot, Githin George, Seeram Pavan,  D P Sahithi Rani,
     B.Roopa Sree, B Greeshmitha, Suman P, Sai Srujan, Ch. Gowtami, Harshitha > Btech
     23'rd batch,  IITTP
   m_isRightToLeft: 0
@@ -3295,7 +3295,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
